@@ -1,81 +1,71 @@
-var canvas = document.getElementById("myCanvas");
-var ctx = canvas.getContext("2d");
-var ballRadius = 10;
-var x = canvas.width/2;
-var y = canvas.height-30;
-var dx = 2;
-var dy = -2;
-var paddleHeight = 10;
-var paddleWidth = 75;
-var paddleX = (canvas.width-paddleWidth)/2;
-var rightPressed = false;
-var leftPressed = false;
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>BreakAway</title>
+    <style>
+    	* { padding: 0; margin: 0; }
+    	canvas { background: #eee; display: block; margin: 0 auto; }
+    </style>
+</head>
+<body>
+<canvas id="myCanvas" width="480" height="320"></canvas>
+<script>
 
-document.addEventListener("keydown", keyDownHandler, false);
-document.addEventListener("keyup", keyUpHandler, false);
+let canvas = document.getElementById("myCanvas");
+let ctx = canvas.getContext("2d");
 
-function keyDownHandler(e) {
-    if(e.keyCode == 39) {
-        rightPressed = true;
-    }
-    else if(e.keyCode == 37) {
-        leftPressed = true;
-    }
-}
-function keyUpHandler(e) {
-    if(e.keyCode == 39) {
-        rightPressed = false;
-    }
-    else if(e.keyCode == 37) {
-        leftPressed = false;
-    }
+function hue() {
+var hue = 'rgb(' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ')';
+return hue;
 }
 
-function drawBall() {
-    ctx.beginPath();
-    ctx.arc(x, y, ballRadius, 0, Math.PI*2);
-    ctx.fillStyle = "#0095DD";
-    ctx.fill();
-    ctx.closePath();
-}
-function drawPaddle() {
-    ctx.beginPath();
-    ctx.rect(paddleX, canvas.height-paddleHeight, paddleWidth, paddleHeight);
-    ctx.fillStyle = "#0095DD";
-    ctx.fill();
-    ctx.closePath();
-}
+//row 1
+let brick1 = {x: 50, y: 40, width: 20, height: 30, status: 1, color: hue()};
+let brick2 = {x: 70, y: 40, width: 30, height: 40, status: 1, color: hue()};
+let brick3 = {x: 100, y: 40, width: 50, height: 20, status: 1, color: hue()};
+let brick4 = {x: 150, y: 40, width: 100, height: 50, status: 1, color: hue()};
+let brick5 = {x: 250, y: 40, width: 20, height: 60, status: 1, color: hue()};
+let brick6 = {x: 270, y: 40, width: 40, height: 50, status: 1, color: hue()};
+let brick7 = {x: 310, y: 40, width: 50, height: 50, status: 1, color: hue()};
+let brick8 = {x: 360, y: 40, width: 40, height: 60, status: 1, color: hue()};
+let brick9 = {x: 400, y: 40, width: 30, height: 60, status: 1, color: hue()};
 
-function draw() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    drawBall();
-    drawPaddle();
+//row2
+let brick10 = {x: 50, y: 100, width: 30, height: 30, status: 1, color: hue()};
+let brick11 = {x: 80, y: 100, width: 40, height: 20, status: 1, color: hue()};
+let brick12 = {x: 120, y: 100, width: 10, height: 60, status: 1, color: hue()};
+let brick13 = {x: 130, y: 100, width: 60, height: 40, status: 1, color: hue()};
+let brick14 = {x: 190, y: 100, width: 20, height: 50, status: 1, color: hue()};
+let brick15 = {x: 210, y: 100, width: 70, height: 10, status: 1, color: hue()};
+let brick16 = {x: 210, y: 110, width: 50, height: 50, status: 1, color: hue()};
+let brick17 = {x: 280, y: 100, width: 40, height: 50, status: 1, color: hue()};
+let brick18 = {x: 320, y: 100, width: 110, height: 60, status: 1, color: hue()};
+let brick19 = {x: 280, y: 100, width: 40, height: 50, status: 1, color: hue()};
+let brick20 = {x: 400, y: 100, width: 30, height: 60, status: 1, color: hue()};
 
-    if(x + dx > canvas.width-ballRadius || x + dx < ballRadius) {
-        dx = -dx;
-    }
-    if(y + dy < ballRadius) {
-        dy = -dy;
-    }
-    else if(y + dy > canvas.height-ballRadius) {
-        if(x > paddleX && x < paddleX + paddleWidth) {
-            dy = -dy;
-        }
-        else {
-            alert("GAME OVER");
-            document.location.reload();
-        }
-    }
 
-    if(rightPressed && paddleX < canvas.width-paddleWidth) {
-        paddleX += 7;
-    }
-    else if(leftPressed && paddleX > 0) {
-        paddleX -= 7;
-    }
 
-    x += dx;
-    y += dy;
-}
+let brickRowLength = 9
+let brickRow1 = [brick1, brick2, brick3, brick4, brick5, brick6, brick7, brick8, brick9];
+let brickRow2 = [brick10, brick11, brick12, brick13, brick14, brick15, brick16, brick17, brick18];
 
-setInterval(draw, 10);
+let bricks = [brickRow1, brickRow2]
+
+function drawBricks() {
+  for (let i = 0; i < bricks.length; i++) {
+    for (let j = 0; j < bricks[i].length; j++)
+      if (bricks[i][j].status === 1) {
+        ctx.beginPath();
+        ctx.rect(bricks[i][j].x, bricks[i][j].y, bricks[i][j].width, bricks[i][j].height);
+        ctx.fillStyle = bricks[i][j].color;
+        ctx.fill();
+        ctx.closePath();
+      }
+    }
+  }
+
+drawBricks()
+
+</script>
+</body>
+</html>
