@@ -7,8 +7,8 @@ class Game {
     this.ctx = ctx;
     console.log("hi constructor");
     this.Board = new Board();
-    this.x = 250;
-    this.y = 300;
+    this.ballX = Game.canvasWidth / 2;
+    this.ballY = Game.canvasHeight - 30;
     this.ballRadius = 10;
     this.ballColor = "#ffffff";
     this.xSpeed = 2;
@@ -19,7 +19,7 @@ class Game {
     this.rightPressed = false;
     this.leftPressed = false;
     this.score = 0;
-    this.play = false;
+    this.play = true;
     this.draw = this.draw.bind(this);
     this.playGame = this.playGame.bind(this);
   }
@@ -27,7 +27,7 @@ class Game {
   //BALL DRAWER
   drawBall() {
     this.ctx.beginPath();
-    this.ctx.arc(this.x, this.y, this.ballRadius, 0, Math.PI*2);
+    this.ctx.arc(this.ballX, this.ballY, this.ballRadius, 0, Math.PI*2);
     this.ctx.fillStyle = this.ballColor;
     this.ctx.fill();
     this.ctx.closePath();
@@ -56,17 +56,16 @@ class Game {
 
     //COLLISION DETECTION
     collisionDetection() {
-        for(let c = 0; c < Board.gameBricks.length; c++) {
-            for(let r = 0; r < Board.gameBricks[c].length; r++) {
-                let b = Board.gameBricks[c][r];
+        for(let c = 0; c < this.Board.gameBricks.length; c++) {
+            for(let r = 0; r < this.Board.gameBricks[c].length; r++) {
+                let b = this.Board.gameBricks[c][r];
                 if (b.status === 1) {
-                if (this.x > b.x && this.x < b.x + b.width && this.y > b.y && this.y < b.y + b.height && (this.score <= (this.brickRowCount * this.brickColumnCount - 1))) {
-                  this.dy = -this.dy;
+                if (this.ballX > b.x && this.ballXZ < b.x + b.width && this.ballY > b.y && this.ballY < b.y + b.height && (this.score <= this.brickRowCount * this.brickColumnCount)) {
+                  this.ySpeed = -this.ySpeed;
                   b.status = 0;
                   this.score++;
                   this.ballColor = Util.hue();
-                  if (this.x > b.x && this.x < b.x + b.width && this.y > b.y && this.y < b.y + b.height && (this.score === this.brickRowCount * this.brickColumnCount)) {
-                    this.dy = -this.dy;
+                  if (this.ballX > b.x && this.ballX < b.x + b.width && this.ballY > b.y && this.ballY < b.y + b.height && (this.score === this.brickRowCount * this.brickColumnCount)) {
                     b.status = 0;
                     alert("YOU WON DOOD!");
                     document.location.reload();
@@ -78,16 +77,17 @@ class Game {
     }
 
     bindKeys() {
-      document.addEventListener("keydown", this.keyDownHandler, false);
-      document.addEventListener("keyup", this.keyUpHandler, false);
-      document.addEventListener("mousemove", this.mouseMoveHandler, false);
+      document.addEventListener("keydown", this.keyDownHandler.bind(this), false);
+      document.addEventListener("keyup", this.keyUpHandler.bind(this), false);
+      document.addEventListener("mousemove", this.mouseMoveHandler.bind(this), false);
       //keypress handling
-
     }
 
 
     keyDownHandler(e) {
       if(e.keyCode == 39) {
+        console.log(this.paddleX)
+
           this.rightPressed = true;
       }
       else if(e.keyCode == 37) {
@@ -132,18 +132,18 @@ class Game {
       this.drawScore();
       this.collisionDetection();
 
-      if (this.play) {
+
     //bouncing
-      if (this.x + this.dx > Game.canvasWidth - this.ballRadius || this.x + this.dx < this.ballRadius) {
-          this.dx = -this.dx;
+      if (this.ballX + this.ballY > Game.canvasWidth - this.ballRadius || this.ballX + this.xSpeed < this.ballRadius) {
+          this.xSpeed = -this.xSpeed;
           this.ballColor = Util.hue();
       }
-      if (this.y + this.dy < this.ballRadius) {
-          this.dy = -this.dy;
+      if (this.ballY + this.ySpeed < this.ballRadius) {
+          this.ySpeed = -this.ySpeed;
           this.ballColor = Util.hue();
-      } else if(this.y + this.dy > Game.canvasHeight - this.ballRadius) {
-          if (this.x > this.paddleX && this.x < this.paddleX + this.paddleWidth) {
-              this.dy = -this.dy;
+      } else if(this.ballY + this.ySpeed > Game.canvasHeight - this.ballRadius) {
+          if (this.ballX > this.paddleX && this.ballX < this.paddleX + this.paddleWidth) {
+              this.ySpeed = -this.ySpeed;
               this.ballColor = Util.hue();
           }
     //losing if the ball goes out the bottom
@@ -154,16 +154,17 @@ class Game {
       }
     //moving the paddle
       if(this.rightPressed && this.paddleX < Game.canvasWidth - this.paddleWidth) {
+        console.log(this.paddleX);
         this.paddleX += 7;
       }
       else if(this.leftPressed && this.paddleX > 0) {
           this.paddleX -= 7;
       }
     //changing ball position
-      this.x += this.dx;
-      this.y += this.dy;
+      this.ballX += this.xSpeed;
+      this.ballY += this.ySpeed;
 
-    }
+
 
       requestAnimationFrame(this.draw.bind(this));
 
