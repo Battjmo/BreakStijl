@@ -14,13 +14,14 @@
 let canvas = document.getElementById("myCanvas");
 let ctx = canvas.getContext("2d");
 
+
+//random color generator
 function hue() {
 var hue = 'rgb(' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ')';
 return hue;
 }
 
-//variable to adjust height value of each row depending on it's placement
-let rowNumer = 0;
+
 
 //VARIABLES
 //ball vars
@@ -37,17 +38,17 @@ let paddleWidth = 75;
 let paddleX = (canvas.width-paddleWidth)/2;
 let rightPressed = false;
 let leftPressed = false;
+//variable to adjust height value of each row depending on it's placement
+let rowNumer = 0;
+//score
+let score = 0;
+//pause variable
+let play = true;
 
 //bricks
 let brickColumnCount = 10;
 let brickRowCount = 3;
-
-let score = 0;
-
-
-//pause variable
-let play = true;
-
+//brick rows
 //row 1
 let brick1 = {x: 50, y: 40, width: 20, height: 30, status: 1, color: hue()};
 let brick2 = {x: 70, y: 40, width: 30, height: 40, status: 1, color: hue()};
@@ -85,13 +86,56 @@ let brick28 = {x: 270, y: 160, width: 40, height: 30, status: 1, color: hue()};
 let brick29 = {x: 310, y: 160, width: 110, height: 40, status: 1, color: hue()};
 let brick30 = {x: 420, y: 160, width: 30, height: 20, status: 1, color: hue()};
 
-
+// row collections
 let brickRow1 = [brick1, brick2, brick3, brick4, brick5, brick6, brick7, brick8, brick9, brick10];
 let brickRow2 = [brick11, brick12, brick13, brick14, brick15, brick16, brick17, brick18, brick19, brick20];
 let brickRow3 = [brick21, brick22, brick23, brick24, brick25, brick26, brick27, brick28, brick29, brick30];
 
-let bricks = [brickRow1, brickRow2, brickRow3]
+//brick collection to be filtered for each game
+let allBricks = [brickRow1, brickRow2, brickRow3]
 
+
+//RANDOMIZERS
+
+//random brick draw percentage generator
+function randomNumber(min, max) {
+    return Math.floor(Math.random() * (max - min) ) + min;
+}
+
+function rowRandomizer(row) {
+  gameRow = [];
+  for (let i = 0; i < row.length; i++) {
+    if (randomNumber(0, 10) < 6) {
+      rameRow.push(row[i]);
+    }
+  }
+  return gameRow;
+}
+
+function brickRowShuffle(rows) {
+    for (let i = rows.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [rows[i], rows[j]] = [rows[j], rows[i]];
+    }
+    return rows;
+}
+
+//BRICK GRID POPULATOR, HERE GOES NOTHING
+function brickGridGenerator() {
+  let gameBricks = [];
+  let shuffledRows = brickRowShuffle(allBricks);
+  for (let i = 0; i < 3; i++) {
+    gameBricks.push(shuffledRows[i]);
+  }
+  for (i = 0; i < gameBricks.length; i++) {
+    gameBricks[i] = rowRandomizer(gameBricks[i])
+    }
+  }
+}
+
+
+
+//BLOOP
 let bloop = new Audio('./sounds/low-bloop.wav');
 
 
@@ -150,6 +194,8 @@ function drawPaddle() {
     ctx.fill();
     ctx.closePath();
 }
+
+
 
 function drawBricks() {
   for (let i = 0; i < bricks.length; i++) {
@@ -239,6 +285,7 @@ function drawBricks() {
     y += dy;
 
   }
+
     requestAnimationFrame(draw);
 
     //end of draw
