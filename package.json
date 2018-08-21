@@ -2,7 +2,6 @@
   "name": "BreakStijl",
   "version": "1.0.0",
   "description": "---",
-  "main": "bricks.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack"
@@ -17,5 +16,10 @@
   "bugs": {
     "url": "https://github.com/Battjmo/BreakStijl/issues"
   },
-  "homepage": "https://github.com/Battjmo/BreakStijl#readme"
+  "homepage": "https://github.com/Battjmo/BreakStijl#readme",
+  "dependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0"
+  }
 }
