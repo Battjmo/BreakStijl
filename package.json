@@ -1,0 +1,21 @@
+{
+  "name": "BreakStijl",
+  "version": "1.0.0",
+  "description": "---",
+  "main": "bricks.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Battjmo/BreakStijl.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Battjmo/BreakStijl/issues"
+  },
+  "homepage": "https://github.com/Battjmo/BreakStijl#readme"
+}

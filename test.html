@@ -1,7 +1,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>BreakAway</title>
+    <title>BreakStijl</title>
     <style>
     	* { padding: 0; margin: 0; }
     	canvas { background: #eee; display: block; margin: 100px auto; }
@@ -131,7 +131,6 @@ function brickGridGenerator() {
     gameBricks[i] = rowRandomizer(gameBricks[i])
     }
   }
-}
 
 
 
@@ -195,8 +194,6 @@ function drawPaddle() {
     ctx.closePath();
 }
 
-
-
 function drawBricks() {
   for (let i = 0; i < bricks.length; i++) {
     for (let j = 0; j < bricks[i].length; j++)
@@ -242,9 +239,7 @@ function drawBricks() {
     ctx.fillText("Score: " + score, 8, 20)
   }
 
-
-
-  //GAME LOOP
+  //DRAW LOOP
   function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawBricks();
@@ -289,6 +284,10 @@ function drawBricks() {
     requestAnimationFrame(draw);
 
     //end of draw
+  }
+
+  function game() {
+
   }
 
 
