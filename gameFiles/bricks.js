@@ -41,6 +41,18 @@ import Util from './util';
   let brick29 = {x: 310, y: 160, width: 110, height: 40, status: 1, color: Util.hue()};
   let brick30 = {x: 420, y: 160, width: 30, height: 20, status: 1, color: Util.hue()};
 
+  //row4
+  let brick31 = {x: 50, y: 160, width: 40, height: 40, status: 1, color: Util.hue()};
+  let brick32 = {x: 90, y: 160, width: 10, height: 50, status: 1, color: Util.hue()};
+  let brick33 = {x: 100, y: 160, width: 50, height: 60, status: 1, color: Util.hue()};
+  let brick34 = {x: 150, y: 160, width: 30, height: 30, status: 1, color: Util.hue()};
+  let brick35 = {x: 180, y: 160, width: 20, height: 40, status: 1, color: Util.hue()};
+  let brick36 = {x: 200, y: 160, width: 60, height: 60, status: 1, color: Util.hue()};
+  let brick37 = {x: 260, y: 160, width: 10, height: 50, status: 1, color: Util.hue()};
+  let brick38 = {x: 270, y: 160, width: 40, height: 30, status: 1, color: Util.hue()};
+  let brick39 = {x: 310, y: 160, width: 110, height: 40, status: 1, color: Util.hue()};
+  let brick40 = {x: 420, y: 160, width: 30, height: 20, status: 1, color: Util.hue()};
+
   // row collections
   let brickRow1 = [brick1, brick2, brick3, brick4, brick5, brick6, brick7, brick8, brick9, brick10];
   let brickRow2 = [brick11, brick12, brick13, brick14, brick15, brick16, brick17, brick18, brick19, brick20];
