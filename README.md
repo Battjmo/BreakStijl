@@ -20,7 +20,7 @@ It will also feature modals descriving the game itself, as well as the artist an
 
 ## Wireframe
 
-![Wireframe](https://github.com/Battjmo/BreakStijl/blob/master/breakstyle-wireframe.svg)
+![Wireframe](https://github.com/Battjmo/BreakStijl/blob/master/images/breakstyle-wireframe.svg)
 
 ## Architecture and Technologies
 
