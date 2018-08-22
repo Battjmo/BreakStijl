@@ -20,7 +20,7 @@ class Game {
     this.rightPressed = false;
     this.leftPressed = false;
     this.score = 0;
-    this.play = true;
+    this.play = false;
     this.draw = this.draw.bind(this);
     this.playthis = this.playGame.bind(this);
   }
@@ -131,7 +131,7 @@ class Game {
       this.drawScore();
       this.collisionDetection();
 
-
+      if (this.play) {
     //bouncing
       if (this.ballX + this.xSpeed > this.canvasWidth - this.ballRadius || this.ballX + this.xSpeed < this.ballRadius) {
           this.xSpeed = -this.xSpeed;
@@ -163,6 +163,7 @@ class Game {
       this.ballX += this.xSpeed;
       this.ballY += this.ySpeed;
 
+    }
 
 
       requestAnimationFrame(this.draw.bind(this));
