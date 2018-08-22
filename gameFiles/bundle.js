@@ -362,7 +362,7 @@ class Game {
       }
     }
 
-    // //COLLISION DETECTION
+    //COLLISION DETECTION
     // collisionDetection() {
     //   let ballCoords = [this.ballLeft, this.ballRight, this.ballTop, this.ballBottom]
     //     for(let c = 0; c < this.Board.gameBricks.length; c++) {
@@ -385,13 +385,14 @@ class Game {
     //     }
     // }
 
-    //COLLISION DETECTION
+    // COLLISION DETECTION
     collisionDetection() {
       //BALL COLLISION COORDINATES
       let ballRightX = this.ballX + this.ballRadius;
       let ballLeftX = this.ballX - this.ballRadius;
       let ballTopY = this.ballY - this.ballRadius;
       let ballBottomY = this.ballY + this.ballRadius;
+
         for(let c = 0; c < this.Board.gameBricks.length; c++) {
             for(let r = 0; r < this.Board.gameBricks[c].length; r++) {
                 let b = this.Board.gameBricks[c][r];
@@ -405,7 +406,11 @@ class Game {
                   b.status = 0;
                   this.score++;
                   this.ballColor = _util__WEBPACK_IMPORTED_MODULE_1__["default"].hue();
-                  if (this.ballX > b.x && this.ballX < b.x + b.width && this.ballY > b.y && this.ballY < b.y + b.height && (this.score === this.Board.brickCount)) {
+                  if ((ballLeftX > b.x && ballLeftX < b.x + b.width && this.ballY > b.y && this.ballY < b.y + b.height && (this.score === this.Board.brickCount)) ||
+                   (ballRightX > b.x && ballRightX < b.x + b.width && this.ballY > b.y && this.ballY < b.y + b.height && (this.score === this.Board.brickCount)) ||
+                    (this.ballX > b.x && this.ballX < b.x + b.width && ballTopY > b.y && ballTopY < b.y + b.height && (this.score === this.Board.brickCount)) ||
+                    (this.ballX > b.x && this.ballX < b.x + b.width && ballBottomY > b.y && ballBottomY < b.y + b.height && (this.score === this.Board.brickCount))
+                    ) {
                     b.status = 0;
                     alert("YOU WON DOOD!");
                     document.location.reload();
@@ -469,6 +474,10 @@ class Game {
       this.collisionDetection();
 
       if (this.play) {
+        let ballRightX = this.ballX + this.ballRadius;
+        let ballLeftX = this.ballX - this.ballRadius;
+        let ballTopY = this.ballY - this.ballRadius;
+        let ballBottomY = this.ballY + this.ballRadius;
     //bouncing
       if (this.ballX + this.xSpeed > this.canvasWidth - this.ballRadius || this.ballX + this.xSpeed < this.ballRadius) {
           this.xSpeed = -this.xSpeed;
