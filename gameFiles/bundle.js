@@ -481,15 +481,13 @@ class Game {
     //bouncing
       if (this.ballX + this.xSpeed > this.canvasWidth - this.ballRadius || this.ballX + this.xSpeed < this.ballRadius) {
           this.xSpeed = -this.xSpeed;
-          this.ballColor = _util__WEBPACK_IMPORTED_MODULE_1__["default"].hue();
       }
       if (this.ballY + this.ySpeed < this.ballRadius) {
           this.ySpeed = -this.ySpeed;
           this.ballColor = _util__WEBPACK_IMPORTED_MODULE_1__["default"].hue();
-      } else if(this.ballY + this.ySpeed > this.canvasHeight - this.ballRadius) {
+      } else if (this.ballY + this.ySpeed > this.canvasHeight - this.ballRadius) {
           if (this.ballX > this.paddleX && this.ballX < this.paddleX + this.paddleWidth) {
               this.ySpeed = -this.ySpeed;
-              this.ballColor = _util__WEBPACK_IMPORTED_MODULE_1__["default"].hue();
           }
     //losing if the ball goes out the bottom
           else {

@@ -1,7 +1,17 @@
-h1 {
+h1, h2 {
   margin: 0 auto;
   margin-top: 40px;
   color: blue;
   text-align: center;
   font-family: 'Roboto', sans-serif;
+}
+
+h2 {
+  margin-bottom: 20px;
+}
+
+p {
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  margin-bottom: 10px;
 }

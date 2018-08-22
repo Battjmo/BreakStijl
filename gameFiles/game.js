@@ -179,15 +179,13 @@ class Game {
     //bouncing
       if (this.ballX + this.xSpeed > this.canvasWidth - this.ballRadius || this.ballX + this.xSpeed < this.ballRadius) {
           this.xSpeed = -this.xSpeed;
-          this.ballColor = Util.hue();
       }
       if (this.ballY + this.ySpeed < this.ballRadius) {
           this.ySpeed = -this.ySpeed;
           this.ballColor = Util.hue();
-      } else if(this.ballY + this.ySpeed > this.canvasHeight - this.ballRadius) {
+      } else if (this.ballY + this.ySpeed > this.canvasHeight - this.ballRadius) {
           if (this.ballX > this.paddleX && this.ballX < this.paddleX + this.paddleWidth) {
               this.ySpeed = -this.ySpeed;
-              this.ballColor = Util.hue();
           }
     //losing if the ball goes out the bottom
           else {
