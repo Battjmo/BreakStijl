@@ -10,6 +10,21 @@ constructor() {
   this.brickCount = this.brickCounter(this.gameBricks);
 }
 
+
+//builds random row from premade set of shapes
+rowBuilder(row, leftEdge, rowNumber) {
+  let rowXPosition = 40;
+  let jumbledRow = [];
+  for (let i = 0; i < row.length; i++) {
+    row[i].x = rowXPosition;
+    row[i].y = rowNumber;
+    rowXPosition += row[i].width;
+    jumbledRow.push(row[i]);
+  }
+  return jumbledRow;
+}
+
+
 //picks random shapes from row to push into final
 rowRandomizer(row) {
   let gameRow = [];
@@ -20,6 +35,8 @@ rowRandomizer(row) {
   }
   return gameRow;
 }
+
+
 
 //shuffles all rows
 brickRowShuffle(rows) {
@@ -39,6 +56,13 @@ brickGridGenerator() {
     gameBricks.push(shuffledRows[i]);
   }
   for (let i = 0; i < gameBricks.length; i++) {
+    if (i === 0) {
+      gameBricks[i] = this.rowBuilder(gameBricks[i], 40, 40);
+  } else if (i === 1) {
+      gameBricks[i] = this.rowBuilder(gameBricks[i], 40, 100);
+  } else {
+    gameBricks[i] = this.rowBuilder(gameBricks[i], 40, 160);
+  }
     gameBricks[i] = this.rowRandomizer(gameBricks[i]);
     }
 

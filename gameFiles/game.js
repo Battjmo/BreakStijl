@@ -110,6 +110,7 @@ class Game {
     //mousehandling
     mouseMoveHandler(e) {
       let relativeX = e.clientX - this.canvasWidth.offsetLeft;
+      console.log(this.canvasWidth.offsetLeft)
       if ((relativeX > (this.paddleWidth / 2)) && (relativeX < (this.canvasWidth - (this.paddleWidth / 2)))) {
         this.paddleX = relativeX - (this.paddleWidth / 2);
       }
