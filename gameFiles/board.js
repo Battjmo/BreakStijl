@@ -10,7 +10,7 @@ constructor() {
   this.brickCount = this.brickCounter(this.gameBricks);
 }
 
-
+//picks random shapes from row to push into final
 rowRandomizer(row) {
   let gameRow = [];
   for (let i = 0; i < row.length; i++) {
@@ -21,6 +21,7 @@ rowRandomizer(row) {
   return gameRow;
 }
 
+//shuffles all rows
 brickRowShuffle(rows) {
   for (let i = rows.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -29,7 +30,8 @@ brickRowShuffle(rows) {
   return rows;
 }
 
-//BRICK GRID POPULATOR, HERE GOES NOTHING
+
+//BRICK GRID POPULATOR, call two above functions
 brickGridGenerator() {
   let gameBricks = [];
   let shuffledRows = this.brickRowShuffle(allBricks);
@@ -43,6 +45,7 @@ brickGridGenerator() {
   return gameBricks;
   }
 
+  //counts the bricks for score and game end purposes
   brickCounter(brickGrid) {
     console.log(brickGrid);
     let brickCount = 0;
