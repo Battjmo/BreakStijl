@@ -3,27 +3,32 @@ import Util from './util';
 
 class Game {
   constructor(ctx) {
+    //CANVAS
     this.canvasWidth = 500;
     this.canvasHeight = 300;
     this.ctx = ctx;
-    console.log("hi constructor");
     this.Board = new Board();
+    //BALL
     this.ballX = this.canvasWidth / 2;
     this.ballY = this.canvasHeight - 30;
     this.ballRadius = 10;
     this.ballColor = "#ffffff";
     this.xSpeed = 2;
     this.ySpeed = -2;
+    //PADDLE
     this.paddleWidth = 75;
     this.paddleHeight = 10;
     this.paddleX = (this.canvasWidth - this.paddleWidth) / 2;
     this.rightPressed = false;
     this.leftPressed = false;
+    //GAME
     this.score = 0;
     this.play = false;
     this.draw = this.draw.bind(this);
     this.playthis = this.playGame.bind(this);
   }
+
+
 
   //BALL DRAWER
   drawBall() {
@@ -41,7 +46,7 @@ class Game {
     this.ctx.fill();
     this.ctx.closePath();
   }
-
+  //BRICK DRAWER
   drawBricks() {
     for (let i = 0; i < this.Board.gameBricks.length; i++) {
       for (let j = 0; j < this.Board.gameBricks[i].length; j++)
@@ -55,13 +60,45 @@ class Game {
       }
     }
 
+    // //COLLISION DETECTION
+    // collisionDetection() {
+    //   let ballCoords = [this.ballLeft, this.ballRight, this.ballTop, this.ballBottom]
+    //     for(let c = 0; c < this.Board.gameBricks.length; c++) {
+    //         for(let r = 0; r < this.Board.gameBricks[c].length; r++) {
+    //             let b = this.Board.gameBricks[c][r];
+    //             if (b.status === 1) {
+    //             if (this.ballX > b.x && this.ballX < b.x + b.width && this.ballY > b.y && this.ballY < b.y + b.height && (this.score < this.Board.brickCount)) {
+    //               this.ySpeed = -this.ySpeed;
+    //               b.status = 0;
+    //               this.score++;
+    //               this.ballColor = Util.hue();
+    //               if (this.ballX > b.x && this.ballX < b.x + b.width && this.ballY > b.y && this.ballY < b.y + b.height && (this.score === this.Board.brickCount)) {
+    //                 b.status = 0;
+    //                 alert("YOU WON DOOD!");
+    //                 document.location.reload();
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
+
     //COLLISION DETECTION
     collisionDetection() {
+      //BALL COLLISION COORDINATES
+      let ballRightX = this.ballX + this.ballRadius;
+      let ballLeftX = this.ballX - this.ballRadius;
+      let ballTopY = this.ballY - this.ballRadius;
+      let ballBottomY = this.ballY + this.ballRadius;
         for(let c = 0; c < this.Board.gameBricks.length; c++) {
             for(let r = 0; r < this.Board.gameBricks[c].length; r++) {
                 let b = this.Board.gameBricks[c][r];
                 if (b.status === 1) {
-                if (this.ballX > b.x && this.ballX < b.x + b.width && this.ballY > b.y && this.ballY < b.y + b.height && (this.score < this.Board.brickCount)) {
+                if ((ballLeftX > b.x && ballLeftX < b.x + b.width && this.ballY > b.y && this.ballY < b.y + b.height && (this.score < this.Board.brickCount)) ||
+                 (ballRightX > b.x && ballRightX < b.x + b.width && this.ballY > b.y && this.ballY < b.y + b.height && (this.score < this.Board.brickCount)) ||
+                  (this.ballX > b.x && this.ballX < b.x + b.width && ballTopY > b.y && ballTopY < b.y + b.height && (this.score < this.Board.brickCount)) ||
+                  (this.ballX > b.x && this.ballX < b.x + b.width && ballBottomY > b.y && ballBottomY < b.y + b.height && (this.score < this.Board.brickCount))
+                  ) {
                   this.ySpeed = -this.ySpeed;
                   b.status = 0;
                   this.score++;
@@ -81,10 +118,9 @@ class Game {
       document.addEventListener("keydown", this.keyDownHandler.bind(this), false);
       document.addEventListener("keyup", this.keyUpHandler.bind(this), false);
       document.addEventListener("mousemove", this.mouseMoveHandler.bind(this), false);
-      //keypress handling
     }
 
-
+      //keypress handling
     keyDownHandler(e) {
       if(e.keyCode == 39) {
           this.rightPressed = true;
@@ -93,7 +129,6 @@ class Game {
           this.leftPressed = true;
       }
       else if(e.keyCode == 32) {
-        console.log("pause triggered", this.play);
         this.play = !this.play;
       }
     }
@@ -153,7 +188,6 @@ class Game {
       }
     //moving the paddle
       if(this.rightPressed && this.paddleX < this.canvasWidth - this.paddleWidth) {
-        console.log(this.paddleX);
         this.paddleX += 7;
       }
       else if(this.leftPressed && this.paddleX > 0) {
