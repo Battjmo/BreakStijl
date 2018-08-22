@@ -3,6 +3,8 @@
 
 ## Overview
 
+[Play Now!](https://battjmo.github.io/BreakStijl/)
+
 BreakStijl is a new take on the unassailable arcade classic Breakout. Instead of a uniform field of rectangular blocks, the player is tasked with breaking down a field of procedurally generated blocks in the style of Theo van Doesburg, founder of the De Stijl art movement most famously championed by Piet Mondrian.
 
 The mechanics of the game will be mostly classic, as attempts to improve upon this incredibly fun base game from a mechanics standpoint in the last 30 years have met with near-uniform failure.
