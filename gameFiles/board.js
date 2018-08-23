@@ -19,7 +19,7 @@ rowBuilder(row, leftEdge, rowHeight) {
   for (let i = 0; i < row.length; i++) {
     row[i].x = leftEdge;
     row[i].y = rowHeight;
-    leftEdge += row[i].width;
+    leftEdge += (row[i].width + 10);
     gameRow.push(row[i]);
   }
   return gameRow;
