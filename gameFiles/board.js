@@ -14,14 +14,15 @@ constructor() {
 //builds random row from premade set of shapes
 rowBuilder(row, leftEdge, rowHeight) {
   // let rowXPosition = 80;
-  let jumbledRow = [];
+  let jumbledRow = this.shuffle(row);
+  let gameRow = [];
   for (let i = 0; i < row.length; i++) {
     row[i].x = leftEdge;
     row[i].y = rowHeight;
     leftEdge += row[i].width;
-    jumbledRow.push(row[i]);
+    gameRow.push(row[i]);
   }
-  return jumbledRow;
+  return gameRow;
 }
 
 
@@ -39,7 +40,7 @@ rowRandomizer(row) {
 
 
 //shuffles all rows
-brickRowShuffle(rows) {
+shuffle(rows) {
   for (let i = rows.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [rows[i], rows[j]] = [rows[j], rows[i]];
@@ -51,7 +52,7 @@ brickRowShuffle(rows) {
 //BRICK GRID POPULATOR, call two above functions
 brickGridGenerator() {
   let gameBricks = [];
-  let shuffledRows = this.brickRowShuffle(allBricks);
+  let shuffledRows = this.shuffle(allBricks);
   for (let i = 0; i < 3; i++) {
     gameBricks.push(shuffledRows[i]);
   }
@@ -71,7 +72,6 @@ brickGridGenerator() {
 
   //counts the bricks for score and game end purposes
   brickCounter(brickGrid) {
-    console.log(brickGrid);
     let brickCount = 0;
     for (var i = 0; i < brickGrid.length; i++) {
       for (var j = 0; j < brickGrid[i].length; j++) {

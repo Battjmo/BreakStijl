@@ -1,8 +1,11 @@
 //UTILITY
+
 const Util = {
 
 hue() {
-  return 'rgb(' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ')';
+  // return 'rgb(' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ')';
+  var color = randomColor();
+  return color;
 },
 
 //random brick draw percentage generator

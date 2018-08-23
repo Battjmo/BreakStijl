@@ -113,14 +113,15 @@ constructor() {
 //builds random row from premade set of shapes
 rowBuilder(row, leftEdge, rowHeight) {
   // let rowXPosition = 80;
-  let jumbledRow = [];
+  let jumbledRow = this.shuffle(row);
+  let gameRow = [];
   for (let i = 0; i < row.length; i++) {
     row[i].x = leftEdge;
     row[i].y = rowHeight;
     leftEdge += row[i].width;
-    jumbledRow.push(row[i]);
+    gameRow.push(row[i]);
   }
-  return jumbledRow;
+  return gameRow;
 }
 
 
@@ -138,7 +139,7 @@ rowRandomizer(row) {
 
 
 //shuffles all rows
-brickRowShuffle(rows) {
+shuffle(rows) {
   for (let i = rows.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [rows[i], rows[j]] = [rows[j], rows[i]];
@@ -150,7 +151,7 @@ brickRowShuffle(rows) {
 //BRICK GRID POPULATOR, call two above functions
 brickGridGenerator() {
   let gameBricks = [];
-  let shuffledRows = this.brickRowShuffle(_bricks__WEBPACK_IMPORTED_MODULE_0__["allBricks"]);
+  let shuffledRows = this.shuffle(_bricks__WEBPACK_IMPORTED_MODULE_0__["allBricks"]);
   for (let i = 0; i < 3; i++) {
     gameBricks.push(shuffledRows[i]);
   }
@@ -170,7 +171,6 @@ brickGridGenerator() {
 
   //counts the bricks for score and game end purposes
   brickCounter(brickGrid) {
-    console.log(brickGrid);
     let brickCount = 0;
     for (var i = 0; i < brickGrid.length; i++) {
       for (var j = 0; j < brickGrid[i].length; j++) {
@@ -319,7 +319,7 @@ class Game {
     this.ySpeed = -3;
     //PADDLE
     this.paddleWidth = 100;
-    this.paddleHeight = 13;
+    this.paddleHeight = 14;
     this.paddleX = (this.canvasWidth - this.paddleWidth) / 2;
     this.rightPressed = false;
     this.leftPressed = false;
@@ -399,7 +399,7 @@ class Game {
                 if (b.status === 1) {
                 if ((ballLeftX > b.x && ballLeftX < b.x + b.width && this.ballY > b.y && this.ballY < b.y + b.height && (this.score < this.Board.brickCount)) ||
                    (ballRightX > b.x && ballRightX < b.x + b.width && this.ballY > b.y && this.ballY < b.y + b.height && (this.score < this.Board.brickCount)) ) {
-                     this.xSpeed = -this.xSpeed
+                     this.xSpeed = -this.xSpeed;
                      b.status = 0;
                      this.score++;
                 }
@@ -487,7 +487,8 @@ class Game {
       }
       if (this.ballY + this.ySpeed < this.ballRadius) {
           this.ySpeed = -this.ySpeed;
-      } if (this.ballX > this.paddleX && this.ballX < this.paddleX + this.paddleWidth && (ballBottomY >= this.canvasHeight - this.paddleHeight)) {
+      } if (this.ballX > this.paddleX && this.ballX < this.paddleX + this.paddleWidth &&
+        ((ballBottomY >= this.canvasHeight - this.paddleHeight)) || (this.ballY >= this.canvasHeight - this.paddleHeight)){
           this.ySpeed = -this.ySpeed;
       }
       else if (this.ballY + this.ySpeed > this.canvasHeight - this.ballRadius) {
@@ -549,10 +550,13 @@ Game.canvasHeight = 500;
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 //UTILITY
+
 const Util = {
 
 hue() {
-  return 'rgb(' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ')';
+  // return 'rgb(' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ')';
+  var color = randomColor();
+  return color;
 },
 
 //random brick draw percentage generator

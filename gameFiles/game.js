@@ -17,7 +17,7 @@ class Game {
     this.ySpeed = -3;
     //PADDLE
     this.paddleWidth = 100;
-    this.paddleHeight = 13;
+    this.paddleHeight = 14;
     this.paddleX = (this.canvasWidth - this.paddleWidth) / 2;
     this.rightPressed = false;
     this.leftPressed = false;
@@ -97,7 +97,7 @@ class Game {
                 if (b.status === 1) {
                 if ((ballLeftX > b.x && ballLeftX < b.x + b.width && this.ballY > b.y && this.ballY < b.y + b.height && (this.score < this.Board.brickCount)) ||
                    (ballRightX > b.x && ballRightX < b.x + b.width && this.ballY > b.y && this.ballY < b.y + b.height && (this.score < this.Board.brickCount)) ) {
-                     this.xSpeed = -this.xSpeed
+                     this.xSpeed = -this.xSpeed;
                      b.status = 0;
                      this.score++;
                 }
@@ -185,7 +185,8 @@ class Game {
       }
       if (this.ballY + this.ySpeed < this.ballRadius) {
           this.ySpeed = -this.ySpeed;
-      } if (this.ballX > this.paddleX && this.ballX < this.paddleX + this.paddleWidth && (ballBottomY >= this.canvasHeight - this.paddleHeight)) {
+      } if (this.ballX > this.paddleX && this.ballX < this.paddleX + this.paddleWidth &&
+        ((ballBottomY >= this.canvasHeight - this.paddleHeight)) || (this.ballY >= this.canvasHeight - this.paddleHeight)){
           this.ySpeed = -this.ySpeed;
       }
       else if (this.ballY + this.ySpeed > this.canvasHeight - this.ballRadius) {
