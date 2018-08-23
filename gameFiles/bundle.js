@@ -129,7 +129,7 @@ rowBuilder(row, leftEdge, rowHeight) {
 rowRandomizer(row) {
   let gameRow = [];
   for (let i = 0; i < row.length; i++) {
-    if (_util__WEBPACK_IMPORTED_MODULE_1__["default"].randomNumber(0, 10) < 6) {
+    if (_util__WEBPACK_IMPORTED_MODULE_1__["default"].randomNumber(0, 10) < 5) {
       gameRow.push(row[i]);
     }
   }
@@ -329,6 +329,8 @@ class Game {
     this.play = false;
     this.draw = this.draw.bind(this);
     this.playthis = this.playGame.bind(this);
+    this.bloop = new Audio('./gameFiles/sounds/low-bloop.wav');
+    this.victory = new Audio('./gameFiles/sounds/success.wav');
   }
 
 
@@ -365,6 +367,8 @@ class Game {
         }
       }
       if (brickCount === 0) {
+        this.bloop.pause();
+        this.victory.play();
         alert("YOU WON DOOD!");
         document.location.reload();
       }
@@ -388,24 +392,20 @@ class Game {
                    (ballRightX > b.x && ballRightX < b.x + b.width && this.ballY > b.y && this.ballY < b.y + b.height )) {
                      this.xSpeed = -this.xSpeed;
                      b.status = 0;
+                     this.bloop.pause();
+                     this.bloop.play();
                      this.score++;
                 }
                 if ((this.ballX > b.x && this.ballX < b.x + b.width && ballTopY > b.y && ballTopY < b.y + b.height) ||
-                  (this.ballX > b.x && this.ballX < b.x + b.width && ballBottomY > b.y && ballBottomY < b.y + b.height))
-                   { this.ySpeed = -this.ySpeed
+                  (this.ballX > b.x && this.ballX < b.x + b.width && ballBottomY > b.y && ballBottomY < b.y + b.height)) {
+                     this.ySpeed = -this.ySpeed;
+                     this.bloop.pause();
+                     this.bloop.play();
                      b.status = 0;
                      this.score++;
                    }
-                  // if ((ballLeftX > b.x && ballLeftX < b.x + b.width && this.ballY > b.y && this.ballY < b.y + b.height && (this.score === this.Board.brickCount)) ||
-                  //  (ballRightX > b.x && ballRightX < b.x + b.width && this.ballY > b.y && this.ballY < b.y + b.height && (this.score === this.Board.brickCount)) ||
-                  //   (this.ballX > b.x && this.ballX < b.x + b.width && ballTopY > b.y && ballTopY < b.y + b.height && (this.score === this.Board.brickCount)) ||
-                  //   (this.ballX > b.x && this.ballX < b.x + b.width && ballBottomY > b.y && ballBottomY < b.y + b.height && (this.score === this.Board.brickCount))
-                  //   ) {
-                  //   b.status = 0;
-                  //
-                  //       }
-                    }
                 }
+              }
             }
         }
 
@@ -477,12 +477,6 @@ class Game {
       if (this.ballY + this.ySpeed < this.ballRadius) {
           this.ySpeed = -this.ySpeed;
       }
-
-      //bouncing off paddle, problemchild
-      // if (((ballRight >= this.paddleX) && (ballRight <= this.paddleX + this.paddleWidth) || ((ballLeft >= this.paddleX) && (ballLeft <= this.paddleX - this.paddleWidth))) &&
-      //   (ballBottom >= this.canvasHeight - this.paddleHeight)) {
-      //     this.ySpeed = -this.ySpeed;
-      // }
       if ((((ballRight + this.xSpeed >= this.paddleX) && (ballRight + this.xSpeed <= this.paddleWidth + this.paddleX)) ||
            ((ballLeft + this.xSpeed >= this.paddleX) && (ballLeft + this.xSpeed <= this.paddleX - this.paddleWidth))) &&
             (ballBottom >= this.canvasHeight - this.paddleHeight)) {
@@ -499,7 +493,7 @@ class Game {
           //losing if the ball goes out the bottom
       if (this.ballY + this.ySpeed > this.canvasHeight - this.ballRadius) {
               alert("GAME OVER");
-              location.reload(true);
+              document.location.reload(true);
           }
 
     //moving the paddle
@@ -557,6 +551,7 @@ __webpack_require__.r(__webpack_exports__);
 const Util = {
 
 hue() {
+  //Now calls the randomColor script, used to used this function:
   // return 'rgb(' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ')';
   var color = randomColor();
   return color;

@@ -30,7 +30,7 @@ rowBuilder(row, leftEdge, rowHeight) {
 rowRandomizer(row) {
   let gameRow = [];
   for (let i = 0; i < row.length; i++) {
-    if (Util.randomNumber(0, 10) < 6) {
+    if (Util.randomNumber(0, 10) < 5) {
       gameRow.push(row[i]);
     }
   }

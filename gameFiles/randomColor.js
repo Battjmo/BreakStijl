@@ -1,7 +1,7 @@
 // randomColor by David Merfield under the CC0 license
 // https://github.com/davidmerfield/randomColor/
 
-;(function(root, factory) {
+(function(root, factory) {
 
   // Support CommonJS
   if (typeof exports === 'object') {
