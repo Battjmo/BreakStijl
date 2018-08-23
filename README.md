@@ -13,12 +13,12 @@ The mechanics of the game will be mostly classic, as attempts to improve upon th
 
 The player will be able to:
 
-- [ ] Generate a near-infinite number of van-Doesburg-inpsired playing field
+- [ ] Generate a near-infinite number of van Doesburg-inpsired playing fields.
 - [ ] Be greeted by fun sound effect when they collide with the blocks composing said field.
 - [ ] Start, pause, and restart the game.
 - [ ] Play some dang breakout.
 
-It will also feature modals descriving the game itself, as well as the artist and movement that inspired it.
+It will also feature modals describing the game itself, as well as the artist and movement that inspired it.
 
 ## Wireframe
 

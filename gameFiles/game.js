@@ -96,14 +96,17 @@ class Game {
                 let b = this.Board.gameBricks[c][r];
                 if (b.status === 1) {
                 if ((ballLeftX > b.x && ballLeftX < b.x + b.width && this.ballY > b.y && this.ballY < b.y + b.height && (this.score < this.Board.brickCount)) ||
-                 (ballRightX > b.x && ballRightX < b.x + b.width && this.ballY > b.y && this.ballY < b.y + b.height && (this.score < this.Board.brickCount)) ||
-                  (this.ballX > b.x && this.ballX < b.x + b.width && ballTopY > b.y && ballTopY < b.y + b.height && (this.score < this.Board.brickCount)) ||
-                  (this.ballX > b.x && this.ballX < b.x + b.width && ballBottomY > b.y && ballBottomY < b.y + b.height && (this.score < this.Board.brickCount))
-                  ) {
-                  this.ySpeed = -this.ySpeed;
-                  b.status = 0;
-                  this.score++;
-                  this.ballColor = Util.hue();
+                   (ballRightX > b.x && ballRightX < b.x + b.width && this.ballY > b.y && this.ballY < b.y + b.height && (this.score < this.Board.brickCount)) ) {
+                     this.xSpeed = -this.xSpeed
+                     b.status = 0;
+                     this.score++;
+                }
+                if ((this.ballX > b.x && this.ballX < b.x + b.width && ballTopY > b.y && ballTopY < b.y + b.height && (this.score < this.Board.brickCount)) ||
+                  (this.ballX > b.x && this.ballX < b.x + b.width && ballBottomY > b.y && ballBottomY < b.y + b.height && (this.score < this.Board.brickCount)))
+                   { this.ySpeed = -this.ySpeed
+                     b.status = 0;
+                     this.score++;
+                   }
                   if ((ballLeftX > b.x && ballLeftX < b.x + b.width && this.ballY > b.y && this.ballY < b.y + b.height && (this.score === this.Board.brickCount)) ||
                    (ballRightX > b.x && ballRightX < b.x + b.width && this.ballY > b.y && this.ballY < b.y + b.height && (this.score === this.Board.brickCount)) ||
                     (this.ballX > b.x && this.ballX < b.x + b.width && ballTopY > b.y && ballTopY < b.y + b.height && (this.score === this.Board.brickCount)) ||
@@ -117,7 +120,7 @@ class Game {
                 }
             }
         }
-    }
+    
 
     bindKeys() {
       document.addEventListener("keydown", this.keyDownHandler.bind(this), false);
@@ -182,17 +185,17 @@ class Game {
       }
       if (this.ballY + this.ySpeed < this.ballRadius) {
           this.ySpeed = -this.ySpeed;
-          this.ballColor = Util.hue();
-      } else if (this.ballY + this.ySpeed > this.canvasHeight - this.ballRadius) {
-          if (this.ballX > this.paddleX && this.ballX < this.paddleX + this.paddleWidth) {
-              this.ySpeed = -this.ySpeed;
-          }
+      } if (this.ballX > this.paddleX && this.ballX < this.paddleX + this.paddleWidth && (ballBottomY > this.canvasHeight - this.paddleHeight)) {
+          this.ySpeed = -this.ySpeed;
+      }
+      else if (this.ballY + this.ySpeed > this.canvasHeight - this.ballRadius) {
+
     //losing if the ball goes out the bottom
-          else {
+
               alert("GAME OVER");
               location.reload(true);
           }
-      }
+
     //moving the paddle
       if(this.rightPressed && this.paddleX < this.canvasWidth - this.paddleWidth) {
         this.paddleX += 7;
