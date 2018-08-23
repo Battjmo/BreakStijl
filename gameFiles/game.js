@@ -4,20 +4,20 @@ import Util from './util';
 class Game {
   constructor(ctx) {
     //CANVAS
-    this.canvasWidth = 500;
-    this.canvasHeight = 300;
+    this.canvasWidth = 700;
+    this.canvasHeight = 500;
     this.ctx = ctx;
     this.Board = new Board();
     //BALL
     this.ballX = this.canvasWidth / 2;
-    this.ballY = this.canvasHeight - 30;
-    this.ballRadius = 10;
+    this.ballY = this.canvasHeight - 40;
+    this.ballRadius = 13;
     this.ballColor = "#ffffff";
-    this.xSpeed = 2;
-    this.ySpeed = -2;
+    this.xSpeed = 3;
+    this.ySpeed = -3;
     //PADDLE
-    this.paddleWidth = 75;
-    this.paddleHeight = 10;
+    this.paddleWidth = 100;
+    this.paddleHeight = 13;
     this.paddleX = (this.canvasWidth - this.paddleWidth) / 2;
     this.rightPressed = false;
     this.leftPressed = false;
@@ -120,7 +120,7 @@ class Game {
                 }
             }
         }
-    
+
 
     bindKeys() {
       document.addEventListener("keydown", this.keyDownHandler.bind(this), false);
@@ -185,7 +185,7 @@ class Game {
       }
       if (this.ballY + this.ySpeed < this.ballRadius) {
           this.ySpeed = -this.ySpeed;
-      } if (this.ballX > this.paddleX && this.ballX < this.paddleX + this.paddleWidth && (ballBottomY > this.canvasHeight - this.paddleHeight)) {
+      } if (this.ballX > this.paddleX && this.ballX < this.paddleX + this.paddleWidth && (ballBottomY >= this.canvasHeight - this.paddleHeight)) {
           this.ySpeed = -this.ySpeed;
       }
       else if (this.ballY + this.ySpeed > this.canvasHeight - this.ballRadius) {
@@ -228,8 +228,8 @@ class Game {
   //END OF CLASS
 }
 
-Game.canvasWidth = 500;
-Game.canvasHeight = 300;
+Game.canvasWidth = 700;
+Game.canvasHeight = 500;
 
 
 export default Game;
