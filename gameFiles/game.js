@@ -21,6 +21,7 @@ class Game {
     this.paddleX = (this.canvasWidth - this.paddleWidth) / 2;
     this.rightPressed = false;
     this.leftPressed = false;
+    this.hitPaddleLastFrame = false;
     //GAME
     this.score = 0;
     this.play = false;
@@ -48,40 +49,26 @@ class Game {
   }
   //BRICK DRAWER
   drawBricks() {
+    let brickCount = 0;
     for (let i = 0; i < this.Board.gameBricks.length; i++) {
-      for (let j = 0; j < this.Board.gameBricks[i].length; j++)
+      for (let j = 0; j < this.Board.gameBricks[i].length; j++) {
         if (this.Board.gameBricks[i][j].status === 1) {
+          brickCount++;
           this.ctx.beginPath();
           this.ctx.rect(this.Board.gameBricks[i][j].x, this.Board.gameBricks[i][j].y, this.Board.gameBricks[i][j].width, this.Board.gameBricks[i][j].height);
           this.ctx.fillStyle = this.Board.gameBricks[i][j].color;
           this.ctx.fill();
           this.ctx.closePath();
+          }
         }
+      }
+      if (brickCount === 0) {
+        alert("YOU WON DOOD!");
+        document.location.reload();
       }
     }
 
-    //COLLISION DETECTION
-    // collisionDetection() {
-    //   let ballCoords = [this.ballLeft, this.ballRight, this.ballTop, this.ballBottom]
-    //     for(let c = 0; c < this.Board.gameBricks.length; c++) {
-    //         for(let r = 0; r < this.Board.gameBricks[c].length; r++) {
-    //             let b = this.Board.gameBricks[c][r];
-    //             if (b.status === 1) {
-    //             if (this.ballX > b.x && this.ballX < b.x + b.width && this.ballY > b.y && this.ballY < b.y + b.height && (this.score < this.Board.brickCount)) {
-    //               this.ySpeed = -this.ySpeed;
-    //               b.status = 0;
-    //               this.score++;
-    //               this.ballColor = Util.hue();
-    //               if (this.ballX > b.x && this.ballX < b.x + b.width && this.ballY > b.y && this.ballY < b.y + b.height && (this.score === this.Board.brickCount)) {
-    //                 b.status = 0;
-    //                 alert("YOU WON DOOD!");
-    //                 document.location.reload();
-    //                     }
-    //                 }
-    //             }
-    //         }
-    //     }
-    // }
+
 
     // COLLISION DETECTION
     collisionDetection() {
@@ -95,27 +82,26 @@ class Game {
             for(let r = 0; r < this.Board.gameBricks[c].length; r++) {
                 let b = this.Board.gameBricks[c][r];
                 if (b.status === 1) {
-                if ((ballLeftX > b.x && ballLeftX < b.x + b.width && this.ballY > b.y && this.ballY < b.y + b.height && (this.score < this.Board.brickCount)) ||
-                   (ballRightX > b.x && ballRightX < b.x + b.width && this.ballY > b.y && this.ballY < b.y + b.height && (this.score < this.Board.brickCount)) ) {
+                if ((ballLeftX > b.x && ballLeftX < b.x + b.width && this.ballY > b.y && this.ballY < b.y + b.height) ||
+                   (ballRightX > b.x && ballRightX < b.x + b.width && this.ballY > b.y && this.ballY < b.y + b.height )) {
                      this.xSpeed = -this.xSpeed;
                      b.status = 0;
                      this.score++;
                 }
-                if ((this.ballX > b.x && this.ballX < b.x + b.width && ballTopY > b.y && ballTopY < b.y + b.height && (this.score < this.Board.brickCount)) ||
-                  (this.ballX > b.x && this.ballX < b.x + b.width && ballBottomY > b.y && ballBottomY < b.y + b.height && (this.score < this.Board.brickCount)))
+                if ((this.ballX > b.x && this.ballX < b.x + b.width && ballTopY > b.y && ballTopY < b.y + b.height) ||
+                  (this.ballX > b.x && this.ballX < b.x + b.width && ballBottomY > b.y && ballBottomY < b.y + b.height))
                    { this.ySpeed = -this.ySpeed
                      b.status = 0;
                      this.score++;
                    }
-                  if ((ballLeftX > b.x && ballLeftX < b.x + b.width && this.ballY > b.y && this.ballY < b.y + b.height && (this.score === this.Board.brickCount)) ||
-                   (ballRightX > b.x && ballRightX < b.x + b.width && this.ballY > b.y && this.ballY < b.y + b.height && (this.score === this.Board.brickCount)) ||
-                    (this.ballX > b.x && this.ballX < b.x + b.width && ballTopY > b.y && ballTopY < b.y + b.height && (this.score === this.Board.brickCount)) ||
-                    (this.ballX > b.x && this.ballX < b.x + b.width && ballBottomY > b.y && ballBottomY < b.y + b.height && (this.score === this.Board.brickCount))
-                    ) {
-                    b.status = 0;
-                    alert("YOU WON DOOD!");
-                    document.location.reload();
-                        }
+                  // if ((ballLeftX > b.x && ballLeftX < b.x + b.width && this.ballY > b.y && this.ballY < b.y + b.height && (this.score === this.Board.brickCount)) ||
+                  //  (ballRightX > b.x && ballRightX < b.x + b.width && this.ballY > b.y && this.ballY < b.y + b.height && (this.score === this.Board.brickCount)) ||
+                  //   (this.ballX > b.x && this.ballX < b.x + b.width && ballTopY > b.y && ballTopY < b.y + b.height && (this.score === this.Board.brickCount)) ||
+                  //   (this.ballX > b.x && this.ballX < b.x + b.width && ballBottomY > b.y && ballBottomY < b.y + b.height && (this.score === this.Board.brickCount))
+                  //   ) {
+                  //   b.status = 0;
+                  //
+                  //       }
                     }
                 }
             }
@@ -175,6 +161,7 @@ class Game {
       this.collisionDetection();
 
       if (this.play) {
+
         //edges of ball
         let ballRight = this.ballX + this.ballRadius;
         let ballLeft = this.ballX - this.ballRadius;
@@ -197,13 +184,18 @@ class Game {
       if ((((ballRight + this.xSpeed >= this.paddleX) && (ballRight + this.xSpeed <= this.paddleWidth + this.paddleX)) ||
            ((ballLeft + this.xSpeed >= this.paddleX) && (ballLeft + this.xSpeed <= this.paddleX - this.paddleWidth))) &&
             (ballBottom >= this.canvasHeight - this.paddleHeight)) {
-              this.ySpeed = -this.ySpeed;
+              if (!this.hitPaddleLastFrame) {
+                this.hitPaddleLastFrame = true;
+                this.ySpeed = -this.ySpeed;
+              } else {
+                this.hitPaddleLastFrame = true;
+              }
+
+            } else {
+              this.hitPaddleLastFrame = false;
             }
           //losing if the ball goes out the bottom
-      else if (this.ballY + this.ySpeed > this.canvasHeight - this.ballRadius) {
-
-
-
+      if (this.ballY + this.ySpeed > this.canvasHeight - this.ballRadius) {
               alert("GAME OVER");
               location.reload(true);
           }

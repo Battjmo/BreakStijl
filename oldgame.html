@@ -236,6 +236,29 @@ function drawBricks() {
       }
   }
 
+  //COLLISION DETECTION
+  // collisionDetection() {
+  //   let ballCoords = [this.ballLeft, this.ballRight, this.ballTop, this.ballBottom]
+  //     for(let c = 0; c < this.Board.gameBricks.length; c++) {
+  //         for(let r = 0; r < this.Board.gameBricks[c].length; r++) {
+  //             let b = this.Board.gameBricks[c][r];
+  //             if (b.status === 1) {
+  //             if (this.ballX > b.x && this.ballX < b.x + b.width && this.ballY > b.y && this.ballY < b.y + b.height && (this.score < this.Board.brickCount)) {
+  //               this.ySpeed = -this.ySpeed;
+  //               b.status = 0;
+  //               this.score++;
+  //               this.ballColor = Util.hue();
+  //               if (this.ballX > b.x && this.ballX < b.x + b.width && this.ballY > b.y && this.ballY < b.y + b.height && (this.score === this.Board.brickCount)) {
+  //                 b.status = 0;
+  //                 alert("YOU WON DOOD!");
+  //                 document.location.reload();
+  //                     }
+  //                 }
+  //             }
+  //         }
+  //     }
+  // }
+
   //score func
   function drawScore() {
     ctx.font = "16px Arial";

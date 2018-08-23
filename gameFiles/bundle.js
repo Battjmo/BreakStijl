@@ -105,8 +105,8 @@ class Board {
 
 constructor() {
   this.gameBricks = this.brickGridGenerator();
-  this.brickCounter = this.brickCounter.bind(this);
-  this.brickCount = this.brickCounter(this.gameBricks);
+  // this.brickCounter = this.brickCounter.bind(this);
+  // this.brickCount = this.brickCounter(this.gameBricks);
 }
 
 
@@ -159,9 +159,9 @@ brickGridGenerator() {
     if (i === 0) {
       gameBricks[i] = this.rowBuilder(gameBricks[i], 50, 52);
   } else if (i === 1) {
-      gameBricks[i] = this.rowBuilder(gameBricks[i], 50, 130);
+      gameBricks[i] = this.rowBuilder(gameBricks[i], 50, 140);
   } else {
-    gameBricks[i] = this.rowBuilder(gameBricks[i], 50, 208);
+    gameBricks[i] = this.rowBuilder(gameBricks[i], 50, 218);
   }
     gameBricks[i] = this.rowRandomizer(gameBricks[i]);
     }
@@ -170,15 +170,15 @@ brickGridGenerator() {
   }
 
   //counts the bricks for score and game end purposes
-  brickCounter(brickGrid) {
-    let brickCount = 0;
-    for (var i = 0; i < brickGrid.length; i++) {
-      for (var j = 0; j < brickGrid[i].length; j++) {
-        brickCount++;
-      }
-    }
-    return brickCount;
-  }
+  // brickCounter(brickGrid) {
+  //   let brickCount = 0;
+  //   for (var i = 0; i < brickGrid.length; i++) {
+  //     for (var j = 0; j < brickGrid[i].length; j++) {
+  //       brickCount++;
+  //     }
+  //   }
+  //   return brickCount;
+  // }
 
 //END OF CLASS
 }
@@ -231,41 +231,41 @@ __webpack_require__.r(__webpack_exports__);
 
   //brick rows
   //row 1
-  let brick1 = {x: 50, y: 40, width: 40, height: 30, status: 1, color: _util__WEBPACK_IMPORTED_MODULE_0__["default"].hue()};
-  let brick2 = {x: 70, y: 40, width: 50, height: 40, status: 1, color: _util__WEBPACK_IMPORTED_MODULE_0__["default"].hue()};
-  let brick3 = {x: 100, y: 40, width: 70, height: 20, status: 1, color: _util__WEBPACK_IMPORTED_MODULE_0__["default"].hue()};
-  let brick4 = {x: 150, y: 40, width: 120, height: 50, status: 1, color: _util__WEBPACK_IMPORTED_MODULE_0__["default"].hue()};
-  let brick5 = {x: 250, y: 40, width: 40, height: 60, status: 1, color: _util__WEBPACK_IMPORTED_MODULE_0__["default"].hue()};
-  let brick6 = {x: 270, y: 40, width: 60, height: 50, status: 1, color: _util__WEBPACK_IMPORTED_MODULE_0__["default"].hue()};
-  let brick7 = {x: 310, y: 40, width: 70, height: 50, status: 1, color: _util__WEBPACK_IMPORTED_MODULE_0__["default"].hue()};
-  let brick8 = {x: 360, y: 40, width: 60, height: 60, status: 1, color: _util__WEBPACK_IMPORTED_MODULE_0__["default"].hue()};
-  let brick9 = {x: 400, y: 40, width: 50, height: 60, status: 1, color: _util__WEBPACK_IMPORTED_MODULE_0__["default"].hue()};
-  let brick10 = {x: 430, y: 40, width: 40, height: 30, status: 1, color: _util__WEBPACK_IMPORTED_MODULE_0__["default"].hue()};
+  let brick1 = {x: 50, y: 40, width: 40, height: 40, status: 1, color: _util__WEBPACK_IMPORTED_MODULE_0__["default"].hue()};
+  let brick2 = {x: 70, y: 40, width: 50, height: 50, status: 1, color: _util__WEBPACK_IMPORTED_MODULE_0__["default"].hue()};
+  let brick3 = {x: 100, y: 40, width: 70, height: 30, status: 1, color: _util__WEBPACK_IMPORTED_MODULE_0__["default"].hue()};
+  let brick4 = {x: 150, y: 40, width: 120, height: 60, status: 1, color: _util__WEBPACK_IMPORTED_MODULE_0__["default"].hue()};
+  let brick5 = {x: 250, y: 40, width: 40, height: 70, status: 1, color: _util__WEBPACK_IMPORTED_MODULE_0__["default"].hue()};
+  let brick6 = {x: 270, y: 40, width: 60, height: 60, status: 1, color: _util__WEBPACK_IMPORTED_MODULE_0__["default"].hue()};
+  let brick7 = {x: 310, y: 40, width: 70, height: 60, status: 1, color: _util__WEBPACK_IMPORTED_MODULE_0__["default"].hue()};
+  let brick8 = {x: 360, y: 40, width: 60, height: 70, status: 1, color: _util__WEBPACK_IMPORTED_MODULE_0__["default"].hue()};
+  let brick9 = {x: 400, y: 40, width: 50, height: 70, status: 1, color: _util__WEBPACK_IMPORTED_MODULE_0__["default"].hue()};
+  let brick10 = {x: 430, y: 40, width: 40, height: 40, status: 1, color: _util__WEBPACK_IMPORTED_MODULE_0__["default"].hue()};
 
 
   //row2
-  let brick11 = {x: 50, y: 100, width: 50, height: 30, status: 1, color: _util__WEBPACK_IMPORTED_MODULE_0__["default"].hue()};
-  let brick12 = {x: 80, y: 100, width: 60, height: 20, status: 1, color: _util__WEBPACK_IMPORTED_MODULE_0__["default"].hue()};
-  let brick13 = {x: 120, y: 100, width: 30, height: 60, status: 1, color: _util__WEBPACK_IMPORTED_MODULE_0__["default"].hue()};
-  let brick14 = {x: 130, y: 100, width: 80, height: 40, status: 1, color: _util__WEBPACK_IMPORTED_MODULE_0__["default"].hue()};
-  let brick15 = {x: 190, y: 100, width: 40, height: 50, status: 1, color: _util__WEBPACK_IMPORTED_MODULE_0__["default"].hue()};
-  let brick16 = {x: 210, y: 100, width: 90, height: 10, status: 1, color: _util__WEBPACK_IMPORTED_MODULE_0__["default"].hue()};
-  let brick17 = {x: 280, y: 100, width: 70, height: 50, status: 1, color: _util__WEBPACK_IMPORTED_MODULE_0__["default"].hue()};
-  let brick18 = {x: 330, y: 100, width: 60, height: 30, status: 1, color: _util__WEBPACK_IMPORTED_MODULE_0__["default"].hue()};
-  let brick19 = {x: 370, y: 100, width: 50, height: 60, status: 1, color: _util__WEBPACK_IMPORTED_MODULE_0__["default"].hue()};
-  let brick20 = {x: 400, y: 100, width: 70, height: 50, status: 1, color: _util__WEBPACK_IMPORTED_MODULE_0__["default"].hue()};
+  let brick11 = {x: 50, y: 100, width: 50, height: 40, status: 1, color: _util__WEBPACK_IMPORTED_MODULE_0__["default"].hue()};
+  let brick12 = {x: 80, y: 100, width: 60, height: 30, status: 1, color: _util__WEBPACK_IMPORTED_MODULE_0__["default"].hue()};
+  let brick13 = {x: 120, y: 100, width: 30, height: 70, status: 1, color: _util__WEBPACK_IMPORTED_MODULE_0__["default"].hue()};
+  let brick14 = {x: 130, y: 100, width: 80, height: 50, status: 1, color: _util__WEBPACK_IMPORTED_MODULE_0__["default"].hue()};
+  let brick15 = {x: 190, y: 100, width: 40, height: 60, status: 1, color: _util__WEBPACK_IMPORTED_MODULE_0__["default"].hue()};
+  let brick16 = {x: 210, y: 100, width: 90, height: 20, status: 1, color: _util__WEBPACK_IMPORTED_MODULE_0__["default"].hue()};
+  let brick17 = {x: 280, y: 100, width: 70, height: 60, status: 1, color: _util__WEBPACK_IMPORTED_MODULE_0__["default"].hue()};
+  let brick18 = {x: 330, y: 100, width: 60, height: 40, status: 1, color: _util__WEBPACK_IMPORTED_MODULE_0__["default"].hue()};
+  let brick19 = {x: 370, y: 100, width: 50, height: 70, status: 1, color: _util__WEBPACK_IMPORTED_MODULE_0__["default"].hue()};
+  let brick20 = {x: 400, y: 100, width: 70, height: 60, status: 1, color: _util__WEBPACK_IMPORTED_MODULE_0__["default"].hue()};
 
   //row3
-  let brick21 = {x: 50, y: 160, width: 60, height: 40, status: 1, color: _util__WEBPACK_IMPORTED_MODULE_0__["default"].hue()};
-  let brick22 = {x: 90, y: 160, width: 30, height: 50, status: 1, color: _util__WEBPACK_IMPORTED_MODULE_0__["default"].hue()};
-  let brick23 = {x: 100, y: 160, width: 70, height: 60, status: 1, color: _util__WEBPACK_IMPORTED_MODULE_0__["default"].hue()};
-  let brick24 = {x: 150, y: 160, width: 50, height: 30, status: 1, color: _util__WEBPACK_IMPORTED_MODULE_0__["default"].hue()};
-  let brick25 = {x: 180, y: 160, width: 40, height: 40, status: 1, color: _util__WEBPACK_IMPORTED_MODULE_0__["default"].hue()};
-  let brick26 = {x: 200, y: 160, width: 80, height: 60, status: 1, color: _util__WEBPACK_IMPORTED_MODULE_0__["default"].hue()};
-  let brick27 = {x: 260, y: 160, width: 30, height: 50, status: 1, color: _util__WEBPACK_IMPORTED_MODULE_0__["default"].hue()};
-  let brick28 = {x: 270, y: 160, width: 60, height: 30, status: 1, color: _util__WEBPACK_IMPORTED_MODULE_0__["default"].hue()};
-  let brick29 = {x: 310, y: 160, width: 130, height: 40, status: 1, color: _util__WEBPACK_IMPORTED_MODULE_0__["default"].hue()};
-  let brick30 = {x: 420, y: 160, width: 50, height: 20, status: 1, color: _util__WEBPACK_IMPORTED_MODULE_0__["default"].hue()};
+  let brick21 = {x: 50, y: 160, width: 60, height: 50, status: 1, color: _util__WEBPACK_IMPORTED_MODULE_0__["default"].hue()};
+  let brick22 = {x: 90, y: 160, width: 30, height: 60, status: 1, color: _util__WEBPACK_IMPORTED_MODULE_0__["default"].hue()};
+  let brick23 = {x: 100, y: 160, width: 70, height: 70, status: 1, color: _util__WEBPACK_IMPORTED_MODULE_0__["default"].hue()};
+  let brick24 = {x: 150, y: 160, width: 50, height: 40, status: 1, color: _util__WEBPACK_IMPORTED_MODULE_0__["default"].hue()};
+  let brick25 = {x: 180, y: 160, width: 40, height: 50, status: 1, color: _util__WEBPACK_IMPORTED_MODULE_0__["default"].hue()};
+  let brick26 = {x: 200, y: 160, width: 80, height: 70, status: 1, color: _util__WEBPACK_IMPORTED_MODULE_0__["default"].hue()};
+  let brick27 = {x: 260, y: 160, width: 30, height: 60, status: 1, color: _util__WEBPACK_IMPORTED_MODULE_0__["default"].hue()};
+  let brick28 = {x: 270, y: 160, width: 60, height: 40, status: 1, color: _util__WEBPACK_IMPORTED_MODULE_0__["default"].hue()};
+  let brick29 = {x: 310, y: 160, width: 130, height: 50, status: 1, color: _util__WEBPACK_IMPORTED_MODULE_0__["default"].hue()};
+  let brick30 = {x: 420, y: 160, width: 50, height: 30, status: 1, color: _util__WEBPACK_IMPORTED_MODULE_0__["default"].hue()};
 
   //row4
   let brick31 = {x: 50, y: 160, width: 60, height: 40, status: 1, color: _util__WEBPACK_IMPORTED_MODULE_0__["default"].hue()};
@@ -323,6 +323,7 @@ class Game {
     this.paddleX = (this.canvasWidth - this.paddleWidth) / 2;
     this.rightPressed = false;
     this.leftPressed = false;
+    this.hitPaddleLastFrame = false;
     //GAME
     this.score = 0;
     this.play = false;
@@ -350,40 +351,26 @@ class Game {
   }
   //BRICK DRAWER
   drawBricks() {
+    let brickCount = 0;
     for (let i = 0; i < this.Board.gameBricks.length; i++) {
-      for (let j = 0; j < this.Board.gameBricks[i].length; j++)
+      for (let j = 0; j < this.Board.gameBricks[i].length; j++) {
         if (this.Board.gameBricks[i][j].status === 1) {
+          brickCount++;
           this.ctx.beginPath();
           this.ctx.rect(this.Board.gameBricks[i][j].x, this.Board.gameBricks[i][j].y, this.Board.gameBricks[i][j].width, this.Board.gameBricks[i][j].height);
           this.ctx.fillStyle = this.Board.gameBricks[i][j].color;
           this.ctx.fill();
           this.ctx.closePath();
+          }
         }
+      }
+      if (brickCount === 0) {
+        alert("YOU WON DOOD!");
+        document.location.reload();
       }
     }
 
-    //COLLISION DETECTION
-    // collisionDetection() {
-    //   let ballCoords = [this.ballLeft, this.ballRight, this.ballTop, this.ballBottom]
-    //     for(let c = 0; c < this.Board.gameBricks.length; c++) {
-    //         for(let r = 0; r < this.Board.gameBricks[c].length; r++) {
-    //             let b = this.Board.gameBricks[c][r];
-    //             if (b.status === 1) {
-    //             if (this.ballX > b.x && this.ballX < b.x + b.width && this.ballY > b.y && this.ballY < b.y + b.height && (this.score < this.Board.brickCount)) {
-    //               this.ySpeed = -this.ySpeed;
-    //               b.status = 0;
-    //               this.score++;
-    //               this.ballColor = Util.hue();
-    //               if (this.ballX > b.x && this.ballX < b.x + b.width && this.ballY > b.y && this.ballY < b.y + b.height && (this.score === this.Board.brickCount)) {
-    //                 b.status = 0;
-    //                 alert("YOU WON DOOD!");
-    //                 document.location.reload();
-    //                     }
-    //                 }
-    //             }
-    //         }
-    //     }
-    // }
+
 
     // COLLISION DETECTION
     collisionDetection() {
@@ -397,27 +384,26 @@ class Game {
             for(let r = 0; r < this.Board.gameBricks[c].length; r++) {
                 let b = this.Board.gameBricks[c][r];
                 if (b.status === 1) {
-                if ((ballLeftX > b.x && ballLeftX < b.x + b.width && this.ballY > b.y && this.ballY < b.y + b.height && (this.score < this.Board.brickCount)) ||
-                   (ballRightX > b.x && ballRightX < b.x + b.width && this.ballY > b.y && this.ballY < b.y + b.height && (this.score < this.Board.brickCount)) ) {
+                if ((ballLeftX > b.x && ballLeftX < b.x + b.width && this.ballY > b.y && this.ballY < b.y + b.height) ||
+                   (ballRightX > b.x && ballRightX < b.x + b.width && this.ballY > b.y && this.ballY < b.y + b.height )) {
                      this.xSpeed = -this.xSpeed;
                      b.status = 0;
                      this.score++;
                 }
-                if ((this.ballX > b.x && this.ballX < b.x + b.width && ballTopY > b.y && ballTopY < b.y + b.height && (this.score < this.Board.brickCount)) ||
-                  (this.ballX > b.x && this.ballX < b.x + b.width && ballBottomY > b.y && ballBottomY < b.y + b.height && (this.score < this.Board.brickCount)))
+                if ((this.ballX > b.x && this.ballX < b.x + b.width && ballTopY > b.y && ballTopY < b.y + b.height) ||
+                  (this.ballX > b.x && this.ballX < b.x + b.width && ballBottomY > b.y && ballBottomY < b.y + b.height))
                    { this.ySpeed = -this.ySpeed
                      b.status = 0;
                      this.score++;
                    }
-                  if ((ballLeftX > b.x && ballLeftX < b.x + b.width && this.ballY > b.y && this.ballY < b.y + b.height && (this.score === this.Board.brickCount)) ||
-                   (ballRightX > b.x && ballRightX < b.x + b.width && this.ballY > b.y && this.ballY < b.y + b.height && (this.score === this.Board.brickCount)) ||
-                    (this.ballX > b.x && this.ballX < b.x + b.width && ballTopY > b.y && ballTopY < b.y + b.height && (this.score === this.Board.brickCount)) ||
-                    (this.ballX > b.x && this.ballX < b.x + b.width && ballBottomY > b.y && ballBottomY < b.y + b.height && (this.score === this.Board.brickCount))
-                    ) {
-                    b.status = 0;
-                    alert("YOU WON DOOD!");
-                    document.location.reload();
-                        }
+                  // if ((ballLeftX > b.x && ballLeftX < b.x + b.width && this.ballY > b.y && this.ballY < b.y + b.height && (this.score === this.Board.brickCount)) ||
+                  //  (ballRightX > b.x && ballRightX < b.x + b.width && this.ballY > b.y && this.ballY < b.y + b.height && (this.score === this.Board.brickCount)) ||
+                  //   (this.ballX > b.x && this.ballX < b.x + b.width && ballTopY > b.y && ballTopY < b.y + b.height && (this.score === this.Board.brickCount)) ||
+                  //   (this.ballX > b.x && this.ballX < b.x + b.width && ballBottomY > b.y && ballBottomY < b.y + b.height && (this.score === this.Board.brickCount))
+                  //   ) {
+                  //   b.status = 0;
+                  //
+                  //       }
                     }
                 }
             }
@@ -477,6 +463,7 @@ class Game {
       this.collisionDetection();
 
       if (this.play) {
+
         //edges of ball
         let ballRight = this.ballX + this.ballRadius;
         let ballLeft = this.ballX - this.ballRadius;
@@ -499,13 +486,18 @@ class Game {
       if ((((ballRight + this.xSpeed >= this.paddleX) && (ballRight + this.xSpeed <= this.paddleWidth + this.paddleX)) ||
            ((ballLeft + this.xSpeed >= this.paddleX) && (ballLeft + this.xSpeed <= this.paddleX - this.paddleWidth))) &&
             (ballBottom >= this.canvasHeight - this.paddleHeight)) {
-              this.ySpeed = -this.ySpeed;
+              if (!this.hitPaddleLastFrame) {
+                this.hitPaddleLastFrame = true;
+                this.ySpeed = -this.ySpeed;
+              } else {
+                this.hitPaddleLastFrame = true;
+              }
+
+            } else {
+              this.hitPaddleLastFrame = false;
             }
           //losing if the ball goes out the bottom
-      else if (this.ballY + this.ySpeed > this.canvasHeight - this.ballRadius) {
-
-
-
+      if (this.ballY + this.ySpeed > this.canvasHeight - this.ballRadius) {
               alert("GAME OVER");
               location.reload(true);
           }

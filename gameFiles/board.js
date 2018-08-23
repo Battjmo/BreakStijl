@@ -6,8 +6,8 @@ class Board {
 
 constructor() {
   this.gameBricks = this.brickGridGenerator();
-  this.brickCounter = this.brickCounter.bind(this);
-  this.brickCount = this.brickCounter(this.gameBricks);
+  // this.brickCounter = this.brickCounter.bind(this);
+  // this.brickCount = this.brickCounter(this.gameBricks);
 }
 
 
@@ -60,9 +60,9 @@ brickGridGenerator() {
     if (i === 0) {
       gameBricks[i] = this.rowBuilder(gameBricks[i], 50, 52);
   } else if (i === 1) {
-      gameBricks[i] = this.rowBuilder(gameBricks[i], 50, 130);
+      gameBricks[i] = this.rowBuilder(gameBricks[i], 50, 140);
   } else {
-    gameBricks[i] = this.rowBuilder(gameBricks[i], 50, 208);
+    gameBricks[i] = this.rowBuilder(gameBricks[i], 50, 218);
   }
     gameBricks[i] = this.rowRandomizer(gameBricks[i]);
     }
@@ -71,15 +71,15 @@ brickGridGenerator() {
   }
 
   //counts the bricks for score and game end purposes
-  brickCounter(brickGrid) {
-    let brickCount = 0;
-    for (var i = 0; i < brickGrid.length; i++) {
-      for (var j = 0; j < brickGrid[i].length; j++) {
-        brickCount++;
-      }
-    }
-    return brickCount;
-  }
+  // brickCounter(brickGrid) {
+  //   let brickCount = 0;
+  //   for (var i = 0; i < brickGrid.length; i++) {
+  //     for (var j = 0; j < brickGrid[i].length; j++) {
+  //       brickCount++;
+  //     }
+  //   }
+  //   return brickCount;
+  // }
 
 //END OF CLASS
 }
