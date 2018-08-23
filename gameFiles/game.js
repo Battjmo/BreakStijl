@@ -17,7 +17,7 @@ class Game {
     this.ySpeed = -3;
     //PADDLE
     this.paddleWidth = 100;
-    this.paddleHeight = 14;
+    this.paddleHeight = 20;
     this.paddleX = (this.canvasWidth - this.paddleWidth) / 2;
     this.rightPressed = false;
     this.leftPressed = false;
@@ -175,23 +175,34 @@ class Game {
       this.collisionDetection();
 
       if (this.play) {
-        let ballRightX = this.ballX + this.ballRadius;
-        let ballLeftX = this.ballX - this.ballRadius;
-        let ballTopY = this.ballY - this.ballRadius;
-        let ballBottomY = this.ballY + this.ballRadius;
-    //bouncing
+        //edges of ball
+        let ballRight = this.ballX + this.ballRadius;
+        let ballLeft = this.ballX - this.ballRadius;
+        let ballTop = this.ballY - this.ballRadius;
+        let ballBottom = this.ballY + this.ballRadius;
+
+    //bouncing off walls
       if (this.ballX + this.xSpeed > this.canvasWidth - this.ballRadius || this.ballX + this.xSpeed < this.ballRadius) {
           this.xSpeed = -this.xSpeed;
       }
       if (this.ballY + this.ySpeed < this.ballRadius) {
           this.ySpeed = -this.ySpeed;
-      } if (this.ballX > this.paddleX && this.ballX < this.paddleX + this.paddleWidth &&
-        ((ballBottomY >= this.canvasHeight - this.paddleHeight)) || (this.ballY >= this.canvasHeight - this.paddleHeight)){
-          this.ySpeed = -this.ySpeed;
       }
+
+      //bouncing off paddle, problemchild
+      // if (((ballRight >= this.paddleX) && (ballRight <= this.paddleX + this.paddleWidth) || ((ballLeft >= this.paddleX) && (ballLeft <= this.paddleX - this.paddleWidth))) &&
+      //   (ballBottom >= this.canvasHeight - this.paddleHeight)) {
+      //     this.ySpeed = -this.ySpeed;
+      // }
+      if ((((ballRight + this.xSpeed >= this.paddleX) && (ballRight + this.xSpeed <= this.paddleWidth + this.paddleX)) ||
+           ((ballLeft + this.xSpeed >= this.paddleX) && (ballLeft + this.xSpeed <= this.paddleX - this.paddleWidth))) &&
+            (ballBottom >= this.canvasHeight - this.paddleHeight)) {
+              this.ySpeed = -this.ySpeed;
+            }
+          //losing if the ball goes out the bottom
       else if (this.ballY + this.ySpeed > this.canvasHeight - this.ballRadius) {
 
-    //losing if the ball goes out the bottom
+
 
               alert("GAME OVER");
               location.reload(true);
