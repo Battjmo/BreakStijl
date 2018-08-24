@@ -208,6 +208,8 @@ class Game {
             }
           //losing if the ball goes out the bottom
       if (this.ballY + this.ySpeed > this.canvasHeight - this.ballRadius) {
+              this.xSpeed = 0;
+              this.ySpeed = 0;
               alert("GAME OVER! PRESS ENTER TO TRY AGAIN");
               document.location.reload();
           }
