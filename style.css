@@ -45,7 +45,7 @@ p {
 }
 
 .instructions {
-  width: 323px;
+  width: 340px;
   padding: 0 5px;
   margin: 0 5px;
   border: 1px solid #2c2e30;
@@ -54,7 +54,7 @@ p {
 }
 
 .story {
-  width: 323px;
+  width: 340px;
   padding: 0 5px;
   margin: 0 5px;
   border: 1px solid #2c2e30;
@@ -78,4 +78,8 @@ p {
 
 .ital {
   font-style: italic;
+}
+
+.bottom {
+  margin-bottom: 20px;
 }
