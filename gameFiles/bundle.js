@@ -391,11 +391,14 @@ class Game {
       }
       if (brickCount === 0) {
         this.bloop.pause();
-        this.victory.play();
-        alert("YOU WIN! PRESS ENTER TO HAVE ANOTHER GO");
+        this.xSpeed = 0;
+        this.ySpeed = 0;
+        this.victory.play().then(alert("YOU WIN! PRESS ENTER TO HAVE ANOTHER GO"));
         document.location.reload();
+
       }
     }
+
 
 
 
@@ -416,6 +419,7 @@ class Game {
                      this.xSpeed = -this.xSpeed;
                      b.status = 0;
                      this.bloop.pause();
+                     this.bloop.currentTime = 0;
                      this.bloop.play();
                      this.score++;
                 }
@@ -423,6 +427,7 @@ class Game {
                   (this.ballX > b.x && this.ballX < b.x + b.width && ballBottomY > b.y && ballBottomY < b.y + b.height)) {
                      this.ySpeed = -this.ySpeed;
                      this.bloop.pause();
+                     this.bloop.currentTime = 0;
                      this.bloop.play();
                      b.status = 0;
                      this.score++;
