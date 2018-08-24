@@ -209,7 +209,7 @@ class Game {
           //losing if the ball goes out the bottom
       if (this.ballY + this.ySpeed > this.canvasHeight - this.ballRadius) {
               alert("GAME OVER! PRESS ENTER TO TRY AGAIN");
-              document.location.reload(true);
+              document.location.reload();
           }
 
     //moving the paddle
