@@ -3,6 +3,10 @@
   margin: 0;
 }
 
+a {
+  text-decoration: none;
+}
+
 canvas {
   background: #000000;
   display: block;
@@ -11,7 +15,7 @@ canvas {
   margin-bottom: 20px;
 }
 
-h1, h2, h4 {
+h1, h2, h3, h4 {
   margin: 0 auto;
   margin-top: 10px;
   color: blue;
@@ -60,4 +64,12 @@ p {
 .pic {
   width: 90%;
   margin: 5%;
+}
+
+.github {
+  height: 54px;
+}
+
+.ital {
+  font-style: italic;
 }

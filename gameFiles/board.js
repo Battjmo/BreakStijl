@@ -58,11 +58,11 @@ brickGridGenerator() {
   }
   for (let i = 0; i < gameBricks.length; i++) {
     if (i === 0) {
-      gameBricks[i] = this.rowBuilder(gameBricks[i], 50, 52);
+      gameBricks[i] = this.rowBuilder(gameBricks[i], 50, 62);
   } else if (i === 1) {
-      gameBricks[i] = this.rowBuilder(gameBricks[i], 50, 140);
+      gameBricks[i] = this.rowBuilder(gameBricks[i], 50, 150);
   } else {
-    gameBricks[i] = this.rowBuilder(gameBricks[i], 50, 218);
+    gameBricks[i] = this.rowBuilder(gameBricks[i], 50, 238);
   }
     gameBricks[i] = this.rowRandomizer(gameBricks[i]);
     }

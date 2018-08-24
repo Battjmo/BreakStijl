@@ -45,7 +45,7 @@ class Game {
   drawPaddle() {
     this.ctx.beginPath();
     this.ctx.rect(this.paddleX, this.canvasHeight - this.paddleHeight, this.paddleWidth, this.paddleHeight);
-    this.ctx.fillStyle = "#0095DD";
+    this.ctx.fillStyle = "#e83030";
     this.ctx.fill();
     this.ctx.closePath();
   }
@@ -67,7 +67,7 @@ class Game {
       if (brickCount === 0) {
         this.bloop.pause();
         this.victory.play();
-        alert("YOU WON DOOD!");
+        alert("YOU WIN! PRESS ENTER TO HAVE ANOTHER GO");
         document.location.reload();
       }
     }
@@ -146,7 +146,7 @@ class Game {
 
     //score func
     drawScore() {
-      this.ctx.font = "16px Arial";
+      this.ctx.font = "20px Roboto";
       this.ctx.fillStyle = "#0095DD";
       this.ctx.fillText("Score: " + this.score, 8, 20);
     }
@@ -190,7 +190,7 @@ class Game {
             }
           //losing if the ball goes out the bottom
       if (this.ballY + this.ySpeed > this.canvasHeight - this.ballRadius) {
-              alert("GAME OVER");
+              alert("GAME OVER! PRESS ENTER TO TRY AGAIN");
               document.location.reload(true);
           }
 
@@ -216,7 +216,6 @@ class Game {
 
     //GAME LOOP
     playGame() {
-      console.log("plyaing");
       this.bindKeys();
       this.draw();
     }
