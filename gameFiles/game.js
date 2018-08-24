@@ -29,6 +29,12 @@ class Game {
     this.playthis = this.playGame.bind(this);
     this.bloop = new Audio('./gameFiles/sounds/low-bloop.wav');
     this.victory = new Audio('./gameFiles/sounds/success.wav');
+    var audio1 = document.getElementById("myAudio1");
+    this.victory.onended = function() {
+    alert("YOU WIN! PRESS RESTURN TO HAVE ANOTHER GO.");
+    document.location.reload();
+
+    };
   }
 
 
@@ -65,11 +71,8 @@ class Game {
         }
       }
       if (brickCount === 0) {
-        this.bloop.pause();
-        this.xSpeed = 0;
-        this.ySpeed = 0;
-        this.victory.play().then(alert("YOU WIN! PRESS ENTER TO HAVE ANOTHER GO"));
-        document.location.reload();
+        this.victory.play().onended();
+
 
       }
     }
@@ -176,9 +179,15 @@ class Game {
     //bouncing off walls
       if (this.ballX + this.xSpeed > this.canvasWidth - this.ballRadius || this.ballX + this.xSpeed < this.ballRadius) {
           this.xSpeed = -this.xSpeed;
+          this.bloop.pause();
+          this.bloop.currentTime = 0;
+          this.bloop.play();
       }
       if (this.ballY + this.ySpeed < this.ballRadius) {
           this.ySpeed = -this.ySpeed;
+          this.bloop.pause();
+          this.bloop.currentTime = 0;
+          this.bloop.play();
       }
       if ((((ballRight + this.xSpeed >= this.paddleX) && (ballRight + this.xSpeed <= this.paddleWidth + this.paddleX)) ||
            ((ballLeft + this.xSpeed >= this.paddleX) && (ballLeft + this.xSpeed <= this.paddleX - this.paddleWidth))) &&
@@ -186,6 +195,9 @@ class Game {
               if (!this.hitPaddleLastFrame) {
                 this.hitPaddleLastFrame = true;
                 this.ySpeed = -this.ySpeed;
+                this.bloop.pause();
+                this.bloop.currentTime = 0;
+                this.bloop.play();
               } else {
                 this.hitPaddleLastFrame = true;
               }
