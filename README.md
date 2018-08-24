@@ -5,7 +5,11 @@
 
 [Play Now!](https://battjmo.github.io/BreakStijl/)
 
-BreakStijl is a new take on the unassailable arcade classic Breakout!. Instead of a uniform field of rectangular blocks, the player is tasked with breaking down a field of procedurally generated blocks in the style of Theo van Doesburg, founder of the De Stijl art movement most famously championed by Piet Mondrian. This work in particular was an important inpsiration:
+![Gameplay GIF](https://media.giphy.com/media/4N1DEonWxvf5sKOxdE/giphy.gif)
+
+BreakStijl is a new take on the unassailable arcade classic Breakout!. Instead of a uniform field of rectangular blocks, the player is tasked with breaking down a field of procedurally generated blocks in the style of [Theo van Doesburg], founder of the De Stijl art movement most famously championed by Piet Mondrian.
+
+His work Composition VII (The Three Graces), seen below, was a particular inspiration:
 
 ![Composition VII](https://github.com/Battjmo/BreakStijl/blob/master/images/Theo_van_Doesburg_Composition_VII_(the_three_graces).jpg)
 
@@ -28,3 +32,7 @@ A final pass is made over reach row, removing each brick or not based on a semi-
 
 Overall, each of the 30 bricks in the set can occupy 30 different positions and either be drawn or not, resulting in 60 configurations per brick, not counting their color.
 This equates to a functionally unlimited number of possible board configurations. The play should never see the same one twice!
+
+## How to Play
+
+The game should work in just about any browser just by clicking the link at the top of the page. It is hosted on GitHub Pages.
