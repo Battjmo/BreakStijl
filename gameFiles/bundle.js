@@ -358,7 +358,7 @@ class Game {
     this.victory.onended = function() {
     alert("YOU WIN! PRESS RESTURN TO HAVE ANOTHER GO.");
     document.location.reload();
-
+    this.muted = false;
     };
   }
 
@@ -449,14 +449,17 @@ class Game {
 
       //keypress handling
     keyDownHandler(e) {
-      if(e.keyCode == 39) {
+      if(e.keyCode === 39) {
           this.rightPressed = true;
       }
-      else if(e.keyCode == 37) {
+      else if(e.keyCode === 37) {
           this.leftPressed = true;
       }
-      else if(e.keyCode == 32) {
+      else if(e.keyCode === 32) {
         this.play = !this.play;
+      }
+      else if(e.keyCode === 77) {
+        this.muted = !this.muted;
       }
     }
 
@@ -481,11 +484,18 @@ class Game {
     drawScore() {
       this.ctx.font = "20px Roboto";
       this.ctx.fillStyle = "#0095DD";
-      this.ctx.fillText("Score: " + this.score, 8, 20);
+      this.ctx.fillText("SCORE: " + this.score, 8, 20);
     }
 
     //DRAW LOOP
     draw() {
+      if (this.muted) {
+        this.bloop.muted = true;
+        this.victory.muted = true;
+      } else {
+        this.bloop.muted = false;
+        this.victory.muted = false;
+      }
       this.ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
       this.drawBricks();
       this.drawBall();
