@@ -7,7 +7,7 @@
 
 ![Gameplay GIF](https://media.giphy.com/media/4N1DEonWxvf5sKOxdE/giphy.gif)
 
-BreakStijl is a new take on the unassailable arcade classic Breakout!. Instead of a uniform field of rectangular blocks, the player is tasked with breaking down a field of procedurally generated blocks in the style of [Theo van Doesburg](https://en.wikipedia.org/wiki/Theo_van_Doesburg), founder of the [De Stijl](https://en.wikipedia.org/wiki/De_Stijl) art movement most famously championed by Piet Mondrian.
+BreakStijl is a new take on the unassailable arcade classic Breakout!. Instead of a uniform field of rectangular bricks, the player is tasked with breaking down a field of procedurally generated bricks in the style of [Theo van Doesburg](https://en.wikipedia.org/wiki/Theo_van_Doesburg), founder of the [De Stijl](https://en.wikipedia.org/wiki/De_Stijl) art movement most famously championed by Piet Mondrian.
 
 His work *Composition VII (The Three Graces)* was a particular inspiration:
 
@@ -19,7 +19,7 @@ The mechanics of the game are mostly classic, as attempts to improve upon this i
 
 - Vanilla JS for game and level generation logic.
 - HTML5 Canvas for rendering.
-- Webpack to tie it all together.
+- WebPack to tie it all together.
 
 ## Procedural Level Generation
 
