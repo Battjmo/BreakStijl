@@ -179,15 +179,9 @@ class Game {
     //bouncing off walls
       if (this.ballX + this.xSpeed > this.canvasWidth - this.ballRadius || this.ballX + this.xSpeed < this.ballRadius) {
           this.xSpeed = -this.xSpeed;
-          this.bloop.pause();
-          this.bloop.currentTime = 0;
-          this.bloop.play();
       }
       if (this.ballY + this.ySpeed < this.ballRadius) {
           this.ySpeed = -this.ySpeed;
-          this.bloop.pause();
-          this.bloop.currentTime = 0;
-          this.bloop.play();
       }
       if ((((ballRight + this.xSpeed >= this.paddleX) && (ballRight + this.xSpeed <= this.paddleWidth + this.paddleX)) ||
            ((ballLeft + this.xSpeed >= this.paddleX) && (ballLeft + this.xSpeed <= this.paddleX - this.paddleWidth))) &&
@@ -195,9 +189,6 @@ class Game {
               if (!this.hitPaddleLastFrame) {
                 this.hitPaddleLastFrame = true;
                 this.ySpeed = -this.ySpeed;
-                this.bloop.pause();
-                this.bloop.currentTime = 0;
-                this.bloop.play();
               } else {
                 this.hitPaddleLastFrame = true;
               }
