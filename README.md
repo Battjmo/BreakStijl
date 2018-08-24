@@ -7,9 +7,9 @@
 
 ![Gameplay GIF](https://media.giphy.com/media/4N1DEonWxvf5sKOxdE/giphy.gif)
 
-BreakStijl is a new take on the unassailable arcade classic Breakout!. Instead of a uniform field of rectangular blocks, the player is tasked with breaking down a field of procedurally generated blocks in the style of [Theo van Doesburg], founder of the De Stijl art movement most famously championed by Piet Mondrian.
+BreakStijl is a new take on the unassailable arcade classic Breakout!. Instead of a uniform field of rectangular blocks, the player is tasked with breaking down a field of procedurally generated blocks in the style of [Theo van Doesburg](https://en.wikipedia.org/wiki/Theo_van_Doesburg), founder of the [De Stijl](https://en.wikipedia.org/wiki/De_Stijl) art movement most famously championed by Piet Mondrian.
 
-His work Composition VII (The Three Graces), seen below, was a particular inspiration:
+His work *Composition VII (The Three Graces)* was a particular inspiration:
 
 ![Composition VII](https://github.com/Battjmo/BreakStijl/blob/master/images/Theo_van_Doesburg_Composition_VII_(the_three_graces).jpg)
 
@@ -31,7 +31,7 @@ A number of bespoke rows of bricks are first assigned a semi-random color (thank
 A final pass is made over reach row, removing each brick or not based on a semi-random chance, creating the gaps in the brick layouts that give them a much more artistic look.
 
 Overall, each of the 30 bricks in the set can occupy 30 different positions and either be drawn or not, resulting in 60 configurations per brick, not counting their color.
-This equates to a functionally unlimited number of possible board configurations. The play should never see the same one twice!
+This equates to a functionally unlimited number of possible board configurations. The player should never see the same one twice!
 
 ## How to Play
 
