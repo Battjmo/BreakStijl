@@ -30,11 +30,15 @@ class Game {
     this.bloop = new Audio('./gameFiles/sounds/low-bloop.wav');
     this.victory = new Audio('./gameFiles/sounds/success.wav');
     var audio1 = document.getElementById("myAudio1");
-    this.victory.onended = function() {
-    alert("YOU WIN! PRESS RESTURN TO HAVE ANOTHER GO.");
-    document.location.reload();
+    // this.victory.onended = function() {
+    // alert("YOU WIN! PRESS RETURN TO HAVE ANOTHER GO.");
+    // document.location.reload();
+    // this.drawWinner();
+    // this.won = true;
+    // };
     this.muted = false;
-    };
+    this.won = false;
+    this.lost = false;
   }
 
 
@@ -71,14 +75,11 @@ class Game {
         }
       }
       if (brickCount === 0) {
-        this.victory.play().onended();
-
-
+        // this.victory.play().onended();
+        this.victory.play();
+        this.won = true;
       }
     }
-
-
-
 
     // COLLISION DETECTION
     collisionDetection() {
@@ -136,6 +137,9 @@ class Game {
       else if(e.keyCode === 77) {
         this.muted = !this.muted;
       }
+      else if(e.keyCode === 13) {
+        document.location.reload();
+      }
     }
 
     keyUpHandler(e) {
@@ -162,6 +166,24 @@ class Game {
       this.ctx.fillText("SCORE: " + this.score, 8, 20);
     }
 
+    drawWinner() {
+      this.xSpeed = 0;
+      this.ySpeed = 0;
+      this.ctx.font = "100px Roboto";
+      this.ctx.fillStyle = "#0095DD";
+      this.ctx.fillText("YOU WIN!", 100, 200);
+      this.ctx.fillText("PRESS ENTER", 25, 300)
+    }
+
+    drawLoser() {
+      this.xSpeed = 0;
+      this.ySpeed = 0;
+      this.ctx.font = "100px Roboto";
+      this.ctx.fillStyle = "#0095DD";
+      this.ctx.fillText("YOU LOSE!", 100, 200);
+      this.ctx.fillText("PRESS ENTER", 25, 300)
+    }
+
     //DRAW LOOP
     draw() {
       if (this.muted) {
@@ -171,12 +193,19 @@ class Game {
         this.bloop.muted = false;
         this.victory.muted = false;
       }
+    
       this.ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
+      if (this.won) {
+        this.drawWinner();
+      } else if (this.lost) {
+        this.drawLoser();
+      } else {
       this.drawBricks();
       this.drawBall();
       this.drawPaddle();
       this.drawScore();
       this.collisionDetection();
+      }
 
       if (this.play) {
 
@@ -208,10 +237,12 @@ class Game {
             }
           //losing if the ball goes out the bottom
       if (this.ballY + this.ySpeed > this.canvasHeight - this.ballRadius) {
-              this.xSpeed = 0;
-              this.ySpeed = 0;
-              alert("GAME OVER! PRESS ENTER TO TRY AGAIN");
-              document.location.reload();
+              // this.xSpeed = 0;
+              // this.ySpeed = 0;
+              // alert("GAME OVER! PRESS ENTER TO TRY AGAIN");
+              // document.location.reload();
+              // this.drawLoser();
+              this.lost = true;
           }
 
     //moving the paddle

@@ -6,8 +6,6 @@ class Board {
 
 constructor() {
   this.gameBricks = this.brickGridGenerator();
-  // this.brickCounter = this.brickCounter.bind(this);
-  // this.brickCount = this.brickCounter(this.gameBricks);
 }
 
 
@@ -70,16 +68,6 @@ brickGridGenerator() {
   return gameBricks;
   }
 
-  //counts the bricks for score and game end purposes
-  // brickCounter(brickGrid) {
-  //   let brickCount = 0;
-  //   for (var i = 0; i < brickGrid.length; i++) {
-  //     for (var j = 0; j < brickGrid[i].length; j++) {
-  //       brickCount++;
-  //     }
-  //   }
-  //   return brickCount;
-  // }
 
 //END OF CLASS
 }
