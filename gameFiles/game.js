@@ -169,7 +169,7 @@ class Game {
     drawWinner() {
       this.xSpeed = 0;
       this.ySpeed = 0;
-      this.ctx.font = "100px Roboto";
+      this.ctx.font = "100px Roboto sans-serif";
       this.ctx.fillStyle = "#0095DD";
       this.ctx.fillText("YOU WIN!", 100, 200);
       this.ctx.fillText("PRESS ENTER", 25, 300)
