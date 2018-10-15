@@ -29,7 +29,6 @@ class Game {
     this.playthis = this.playGame.bind(this);
     this.bloop = new Audio('./gameFiles/sounds/low-bloop.wav');
     this.victory = new Audio('./gameFiles/sounds/success.wav');
-    var audio1 = document.getElementById("myAudio1");
     // this.victory.onended = function() {
     // alert("YOU WIN! PRESS RETURN TO HAVE ANOTHER GO.");
     // document.location.reload();
@@ -172,7 +171,7 @@ class Game {
       this.ctx.font = "100px Roboto sans-serif";
       this.ctx.fillStyle = "#0095DD";
       this.ctx.fillText("YOU WIN!", 100, 200);
-      this.ctx.fillText("PRESS ENTER", 25, 300)
+      this.ctx.fillText("PRESS ENTER", 25, 300);
     }
 
     drawLoser() {
@@ -181,7 +180,7 @@ class Game {
       this.ctx.font = "100px Roboto";
       this.ctx.fillStyle = "#0095DD";
       this.ctx.fillText("YOU LOSE!", 100, 200);
-      this.ctx.fillText("PRESS ENTER", 25, 300)
+      this.ctx.fillText("PRESS ENTER", 25, 300);
     }
 
     //DRAW LOOP
