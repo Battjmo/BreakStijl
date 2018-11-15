@@ -13,6 +13,7 @@ canvas {
   margin: auto;
   margin-top: 20px;
   margin-bottom: 20px;
+  border-radius: 5px;
 }
 
 h1, h2, h3, h4 {
@@ -23,8 +24,10 @@ h1, h2, h3, h4 {
   font-family: 'Roboto', sans-serif;
 }
 
-h2 {
+.sidebar-header {
+  padding-bottom: 10px;
   margin-bottom: 10px;
+  border-bottom: 2px groove #66686b;
 }
 
 p {
@@ -39,7 +42,7 @@ p {
   text-transform: uppercase;
   font-weight: 600;
   font-family: 'Roboto', sans-serif;
-  color: #0346a5;
+  color: #6f6f7c;
 }
 
 .main {
@@ -50,6 +53,7 @@ p {
   width: 340px;
   padding: 0 5px;
   margin: 0 5px;
+  border-radius: 5px;
   border: 1px solid #2c2e30;
   background-color: #edecc4;
   box-shadow: 3px 3px #e1e1e1;
@@ -59,6 +63,7 @@ p {
   width: 340px;
   padding: 0 5px;
   margin: 0 5px;
+  border-radius: 5px;
   border: 1px solid #2c2e30;
   background-color: #fff6e8;
   box-shadow: 3px 3px #e1e1e1;
@@ -88,5 +93,5 @@ p {
 
 .bottom-instruction {
   padding-bottom: 20px;
-  border-bottom: 1px solid #66686b;
+  border-bottom: 3px dotted #66686b;
 }
